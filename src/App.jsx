@@ -17,7 +17,7 @@ const App = () => {
 
   return (
     <>
-      <div className="header flex justify-between	p-8">
+      <div className="header flex justify-between	py-8">
 
         <div className="logo">logo</div>
 
