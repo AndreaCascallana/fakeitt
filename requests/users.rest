@@ -1,0 +1,23 @@
+GET http://localhost:5757/users
+
+
+###
+
+
+GET http://localhost:5757/users?name=Beaulah
+
+
+###
+
+
+POST http://localhost:5757/users
+Content-Type: application/json
+
+{
+    "name": "Pepitín",
+    "fName": "Pepitez",
+    "dob": "2022-03-17T13:54:54.203Z",
+    "sex": "male",
+    "email": "pepitin.pepitez@hotmail.com",
+    "password": "pepitinhola"
+}
