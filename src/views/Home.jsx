@@ -4,7 +4,7 @@ import PostCard from '../components/Global/PostCard/PostCard'
 import usePostsData from '../usePostsData'
 const Home = () => {
   const { posts, isLoading, hasError } = usePostsData();
-  console.log(posts)
+  //console.log(posts)
   
 
   // guards

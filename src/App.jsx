@@ -1,20 +1,12 @@
 import React from "react";
-import { useContext } from "react";
-import AppFilter from "./components/AppFilter";
-import Button from "./components/Global/Button";
-import EditingForm from "./components/EditingForm";
-import UserList from "./components/UserList";
-import { MainContext } from "./contexts/MainContext";
-import Form from "./components/Form";
+
+
 import { NavLink } from "react-router-dom";
 import Routing from "./Routing";
 import classNames from "classnames";
 
 const App = () => {
-  // Custom hook: UserData
-  // const { users, fetchUsers, deleteUser, hasError } = useUsersData();
-
-  const { isFormVisible } = useContext(MainContext);
+  
   const navLinkClasses = ({ isActive }) =>
     classNames({
       "text-zinc-500": !isActive,
@@ -35,25 +27,25 @@ const App = () => {
           <div className="naviItem">
             <NavLink
               className={(state) => navLinkClasses(state)}
-              to="/about"
+              to="/profile/0762083f-b2ab-463e-972d-bb6f134694b1"
             >
-              About
+              My Profile
             </NavLink>
           </div>
           <div className="naviItem">
             <NavLink
               className={(state) => navLinkClasses(state)}
-              to="/users"
+              to="/search"
             >
-              Users
+              Search
             </NavLink>
           </div>
           <div className="naviItem">
             <NavLink
               className={(state) => navLinkClasses(state)}
-              to="/aaa"
+              to="/post/new"
             >
-              404
+              New Post
             </NavLink>
           </div>
         </nav>
@@ -69,33 +61,7 @@ const App = () => {
         <Routing />
       </main>
 
-      <div className="flex items-center justify-between">
-        <div>
-          <div>
-            <AppFilter></AppFilter>
-          </div>
-          <div>
-            <UserList></UserList>
-            <Button></Button>
-          </div>
-        </div>
-        {isFormVisible ? (
-          <div>
-            <EditingForm></EditingForm>
-            {/* <Form /> */}
-          </div>
-        ) : null}
-
-        {/* {!hasError ? (
-        users.map((user) => (
-          <div key={user.id} onClick={() => deleteUser(user.id)}>
-            {user.name} - {user.fName}
-          </div>
-        ))
-      ) : (
-        <p>algo fue mal...</p>
-      )} */}
-      </div>
+      
     </div>
   );
 };
