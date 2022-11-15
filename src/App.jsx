@@ -16,7 +16,7 @@ const App = () => {
   const { isFormVisible } = useContext(MainContext);
 
   return (
-    <>
+    <div className="app">
       <div className="header flex justify-between	p-8">
 
         <div className="logo">logo</div>
@@ -78,7 +78,7 @@ const App = () => {
         <p>algo fue mal...</p>
       )} */}
       </div>
-    </>
+    </div>
   );
 };
 
