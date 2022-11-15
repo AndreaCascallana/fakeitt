@@ -34,7 +34,7 @@ const Routing = () => {
         <Route path=":commentId" element={<CommentSingle />} />
         <Route path=":commentId/edit" element={<CommentEdition />} />
       </Route>
-      <Route path="/posts">
+      <Route path="/post">
         {/* View de Posts no va a existir, va a ser la Home. ¿Qué hacemos con el index element? */}
         {/* <Route index element={<Posts/>} /> */}
         <Route path="new" element={<PostNew/>} />
