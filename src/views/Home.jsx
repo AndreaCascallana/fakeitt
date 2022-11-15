@@ -1,36 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate,Link } from 'react-router-dom'
 import PostCard from '../components/Global/PostCard/PostCard'
-
+import usePostsData from '../usePostsData'
 const Home = () => {
-  //
-  const [posts,setPosts]=useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [hasError, setHasError] = useState(false)
-  const navigate = useNavigate();
-
-  // petición
-  useEffect(() => {
-    fetchAllPosts()
-  }, [])
-  //console.log(posts)
-
-  //fetch, loading and error controller
-  const fetchAllPosts = async () => {
-    try {
-      const request = await fetch("http://localhost:5757/posts?_order=asc&_sort=date")
-      //console.log(request);
-      const posts_ = await fetch("http://localhost:5757/posts?_order=asc&_sort=date")
-        .then(d => d.json())
-        .then(d => d)
-      setPosts(posts_)
-      //console.log(posts_)
-    } catch (e) {
-      setHasError(true)
-      setIsLoading(false)
-      //navigate("/404")
-    }
-  }
+  const { posts, isLoading, hasError } = usePostsData();
+  console.log(posts)
+  
 
   // guards
   if (hasError) {
