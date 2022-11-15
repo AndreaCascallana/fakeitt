@@ -8,48 +8,66 @@ import { MainContext } from "./contexts/MainContext";
 import Form from "./components/Form";
 import { NavLink } from "react-router-dom";
 import Routing from "./Routing";
+import classNames from "classnames";
 
 const App = () => {
   // Custom hook: UserData
   // const { users, fetchUsers, deleteUser, hasError } = useUsersData();
 
   const { isFormVisible } = useContext(MainContext);
-
+  const navLinkClasses = ({ isActive }) =>
+    classNames({
+      "text-zinc-500": !isActive,
+      "text-black": isActive,
+    });
+  // const routes = [{to: "/", label: "Home"}]
   return (
     <div className="app">
       <div className="header flex justify-between	p-8">
-
         <div className="logo">logo</div>
 
         <nav className="navi flex gap-8">
           <div className="naviItem">
-            <NavLink className={({ isActive }) => isActive ? "text-black" : "text-zinc-400	"} to="/">Home</NavLink>
+            <NavLink exact className={(state) => navLinkClasses(state)} to="/">
+              Home
+            </NavLink>
           </div>
           <div className="naviItem">
-            <NavLink className={({ isActive }) => isActive ? "text-black" : "text-zinc-400	"} to="/about">About</NavLink>
+            <NavLink
+              className={(state) => navLinkClasses(state)}
+              to="/about"
+            >
+              About
+            </NavLink>
           </div>
           <div className="naviItem">
-            <NavLink className={({ isActive }) => isActive ? "text-black" : "text-zinc-400	"} to="/users">Users</NavLink>
+            <NavLink
+              className={(state) => navLinkClasses(state)}
+              to="/users"
+            >
+              Users
+            </NavLink>
           </div>
           <div className="naviItem">
-            <NavLink className={({ isActive }) => isActive ? "text-black" : "text-zinc-400	"} to="/aaa">404</NavLink>
+            <NavLink
+              className={(state) => navLinkClasses(state)}
+              to="/aaa"
+            >
+              404
+            </NavLink>
           </div>
         </nav>
       </div>
 
-
-      {/* 
-      *
-      **** ¡¡IMPORTANTE!!
-      **** El ruteado siempre tiene que ir en un main
-      *
-      */}
+      {/*
+       *
+       **** ¡¡IMPORTANTE!!
+       **** El ruteado siempre tiene que ir en un main
+       *
+       */}
       <main className="main">
         <Routing />
       </main>
-
-
-
 
       <div className="flex items-center justify-between">
         <div>
