@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { EditingUserContext } from "../contexts/EditingUserContext";
 import { MainContext } from "../contexts/MainContext";
 import { UsersContext } from "../contexts/UsersContext";
-import Button from "./Global/Button";
+import Button from "./Global/Button/Button";
 
 const UserSingle = ({ children, user }) => {
   const { deleteUser } = useContext(UsersContext);

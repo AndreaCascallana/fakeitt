@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useContext } from "react";
 import { EditingUserContext } from "../contexts/EditingUserContext";
-import Button from "./Global/Button";
+import Button from "./Global/Button/Button";
 import { useFormik } from 'formik';
 
 const EditingForm = () => {

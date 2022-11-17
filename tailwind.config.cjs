@@ -1,8 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,cjs,jsx,react}"],
+  content: ["./src/**/*.{html,cjs,jsx,sass}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        body: ["IBM Plex Sans", "sans-serif"],
+      },
+    },
   },
   plugins: [],
-}
+};
