@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import { createContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const UsersContext = createContext();
 
 const UsersContextProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetchUsers();

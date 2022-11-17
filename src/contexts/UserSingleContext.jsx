@@ -8,7 +8,7 @@ const UserSingleContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
   useEffect(() => {
-    fetchSingle();
+    // fetchSingle();
   }, []);
 
   const fetchSingle = async () => {

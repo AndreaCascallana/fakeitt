@@ -1,37 +1,40 @@
 import React, { useEffect, useState } from "react";
 
-
 const usePostsData = () => {
-
-    //
-  const [posts,setPosts]=useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [hasError, setHasError] = useState(false)
+  //
+  const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
   //const navigate = useNavigate();
 
   // petición
   useEffect(() => {
-    fetchPosts()
-  }, [])
+    fetchPosts();
+  }, []);
   //console.log(posts)
 
   //fetch, loading and error controller
   const fetchPosts = async () => {
     try {
-      const request = await fetch("http://localhost:5757/posts?_order=asc&_sort=date")
-      //console.log(request);
-      const posts_ = await fetch("http://localhost:5757/posts?_order=asc&_sort=date")
-        .then(d => d.json())
-        .then(d => d)
-      setPosts(posts_)
+      setIsLoading(true);
+      const posts_ = await fetch(
+        "http://localhost:5757/posts?_order=asc&_sort=date"
+      )
+        .then((d) => d.json())
+        .then((d) => d);
+
+      console.log(posts_);
+      setPosts(posts_);
+      setIsLoading(false);
       //console.log(posts_)
     } catch (e) {
-      setHasError(true)
-      setIsLoading(false)
+      console.log(e);
+      setHasError(true);
+      setIsLoading(false);
       //navigate("/404")
     }
-  }
-  return {posts, isLoading, hasError}
-}
+  };
+  return { posts, isLoading, hasError };
+};
 
-export default usePostsData
+export default usePostsData;
