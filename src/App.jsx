@@ -20,7 +20,7 @@ const App = () => {
 
         <nav className="navi flex gap-8">
           <div className="naviItem">
-            <NavLink exact className={(state) => navLinkClasses(state)} to="/">
+            <NavLink className={(state) => navLinkClasses(state)} to="/">
               Home
             </NavLink>
           </div>
