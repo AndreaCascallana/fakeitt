@@ -16,6 +16,7 @@ import {
 } from "./PostCard.module.sass";
 
 const PostCard = ({ postId, authorImg, postAuthor, postDate, postText }) => {
+
   const [user, setUser] = useState({});
   useEffect(() => {
     fetchUserName();
@@ -64,7 +65,7 @@ const PostCard = ({ postId, authorImg, postAuthor, postDate, postText }) => {
       </div>
 
       <div>
-        <Link to={`/posts/${postId}`}>Go to single post</Link>
+        <Link to={`/post/${postId}`}>Go to single post</Link>
       </div>
     </div>
   );
