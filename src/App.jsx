@@ -2,10 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Routing from "./Routing";
 import classNames from "classnames";
-import AppStyles from "./App.module.sass"
+import AppStyles from "./App.module.sass";
 
 const App = () => {
-  
   const navLinkClasses = ({ isActive }) =>
     classNames({
       "text-zinc-500": !isActive,
@@ -16,7 +15,13 @@ const App = () => {
     <div className={AppStyles.app}>
       <div className={AppStyles.header}>
         <div className={AppStyles.logo_container}>
-          <img className={AppStyles.logo} src="/img/fakeitt-isotipo.svg" alt="isotipo Fakeitt" />
+          <NavLink className={(state) => navLinkClasses(state)} to="/">
+            <img
+              className={AppStyles.logo}
+              src="/img/fakeitt-isotipo.svg"
+              alt="isotipo Fakeitt"
+            />
+          </NavLink>
         </div>
 
         <nav className={AppStyles.navi}>
@@ -34,10 +39,7 @@ const App = () => {
             </NavLink>
           </div>
           <div className={AppStyles.navItem}>
-            <NavLink
-              className={(state) => navLinkClasses(state)}
-              to="/search"
-            >
+            <NavLink className={(state) => navLinkClasses(state)} to="/search">
               Search
             </NavLink>
           </div>
@@ -61,8 +63,6 @@ const App = () => {
       <main className="main">
         <Routing />
       </main>
-
-      
     </div>
   );
 };

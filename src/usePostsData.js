@@ -5,13 +5,11 @@ const usePostsData = () => {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-  //const navigate = useNavigate();
 
   // petición
   useEffect(() => {
     fetchPosts();
   }, []);
-  //console.log(posts)
 
   //fetch, loading and error controller
   const fetchPosts = async () => {
@@ -23,10 +21,8 @@ const usePostsData = () => {
         .then((d) => d.json())
         .then((d) => d);
 
-      console.log(posts_);
       setPosts(posts_);
       setIsLoading(false);
-      //console.log(posts_)
     } catch (e) {
       console.log(e);
       setHasError(true);

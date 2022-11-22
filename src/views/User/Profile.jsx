@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { UserSingleContext  } from "../contexts/UserSingleContext";
+import { UserSingleContext  } from "../../contexts/UserSingleContext";
 
 const UserSingle = () => {
   // PARA UTILIZAR EL USERCONTEXT YA CREADO

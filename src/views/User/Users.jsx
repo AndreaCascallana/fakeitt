@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { UsersContext } from "../contexts/UsersContext";
-import { UserSingleContext } from "../contexts/UserSingleContext";
+import { UsersContext } from "../../contexts/UsersContext";
+import { UserSingleContext } from "../../contexts/UserSingleContext";
 
 
 const Users = () => {
