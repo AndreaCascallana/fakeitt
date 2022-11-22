@@ -26,14 +26,13 @@ const PostSingle = () => {
 
   const { isLoading,  hasError,fetchSinglePost, post, fetchUserName, user, formatDate} = useSinglePostData();
  
-   // petición
+   // petición nada más cargar
    useEffect(() => {
     fetchSinglePost(postId);
     
- 
-    // console.log(post);
   }, []);
 
+  //Petición cuando cambia el campo post.userId
   useEffect(() => {
     fetchUserName(post.userId);
   }, [post.userId]);
