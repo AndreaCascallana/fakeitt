@@ -1,0 +1,36 @@
+.postCard {
+  @apply m-4 bg-slate-400 w-1/2;
+}
+.postCard .cardData {
+  @apply flex gap-1;
+}
+.postCard .cardData .avatar {
+  @apply w-10;
+}
+.postCard .cardData .author {
+  @apply font-bold;
+}
+.postCard .cardData .date {
+  @apply font-sans;
+}
+.postCard .cardContent {
+  @apply my-1;
+}
+.postCard .cardContent .cardTitle {
+  @apply text-lg;
+}
+.postCard .cardContent .cardText {
+  @apply text-cyan-900;
+}
+.postCard .postCtas {
+  @apply flex gap-2 justify-end;
+}
+.postCard .postCtas .postCtaBlock {
+  @apply flex gap-1;
+}
+.postCard .postCtas .postCtaBlock .icon {
+  @apply w-4;
+}
+.postCard .postCtas .postCtaBlock .number {
+  @apply text-xs;
+}/*# sourceMappingURL=PostCard.module.css.map */
