@@ -37,12 +37,13 @@ const PostCard = ({ postId, authorImg, postAuthor, postDate, postText }) => {
   }
 
   return (
+    <Link to={`/post/${postId}`}>
     <div className={postCard}>
       <div className={cardData}>
         <div className={avatar}>
           <img src="#" className="w-10" />
         </div>
-        <div className={author}>{user.name}</div>
+        <div className={author}>{user.name} {user.fName}</div>
         <div className={date}>{formatDate(postDate)}</div>
       </div>
       <div className={cardContent}>
@@ -64,10 +65,9 @@ const PostCard = ({ postId, authorImg, postAuthor, postDate, postText }) => {
         </div>
       </div>
 
-      <div>
-        <Link to={`/post/${postId}`}>Go to single post</Link>
-      </div>
+      
     </div>
+    </Link>
   );
 };
 

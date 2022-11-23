@@ -1,7 +1,12 @@
+@import src/assets/style.sass
 .postCard
-    @apply m-4 bg-slate-400 w-1/2
+    @apply m-4 w-1/2 p-6
+    @apply rounded-2xl
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16)
     .cardData
+        @apply mb-6
         @apply  flex gap-1
+        color: $primary-color
         .avatar
             @apply w-10
         .author
@@ -9,9 +14,10 @@
         .date
             @apply font-sans
     .cardContent
-        @apply my-1
+        @apply mb-6
         .cardTitle
             @apply text-lg
+            color: $primary-color
         .cardText
             @apply text-cyan-900
     .postCtas
@@ -20,6 +26,7 @@
             @apply flex gap-1
             .icon
                 @apply w-4
+                color: $primary-color
             .number
                 @apply text-xs
 
