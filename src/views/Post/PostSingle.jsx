@@ -1,9 +1,11 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useContext } from "react";
+
 import { useParams } from "react-router-dom";
-import { PostSingleContext } from "../contexts/PostSingleContext";
-import useSinglePostData from "../useSinglePostData";
+
+import useSinglePostData from "./useSinglePostData";
+
+
 import {
   postDiv,
   postData,
@@ -18,6 +20,7 @@ import {
   icon,
   number,
 } from "./PostSingle.module.sass";
+
 const PostSingle = () => {
   const { postId } = useParams();
   
@@ -35,7 +38,7 @@ const PostSingle = () => {
   //Petición cuando cambia el campo post.userId
   useEffect(() => {
     fetchUserName(post.userId);
-  }, [post.userId]);
+  }, [post]);
   
     
  
