@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import PostCard from "../components/Global/PostCard/PostCard";
-import usePostsData from "../usePostsData";
+import usePostsData from "./Post/usePostsData";
 const Home = () => {
   const { posts, isLoading, hasError } = usePostsData();
   //console.log(posts)
@@ -19,7 +19,7 @@ const Home = () => {
       <div>Home</div>
       <div className="cardList">
         {posts.map((post) => (
-          <>
+          
             <PostCard
               key={post.id}
               postId={post.id}
@@ -28,7 +28,7 @@ const Home = () => {
               postDate={post.date}
               postText={post.text}
             />
-          </>
+        
         ))}
       </div>
     </>
