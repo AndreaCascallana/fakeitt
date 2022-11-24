@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import useDate from "../useDate";
+import useUserName from "../useUserName";
 import {
   postCard,
   cardData,
@@ -16,25 +18,14 @@ import {
 } from "./PostCard.module.sass";
 
 const PostCard = ({ postId, authorImg, postAuthor, postDate, postText }) => {
-
-  const [user, setUser] = useState({});
+  
+  const{user,fetchUserName}=useUserName();
+  const {formatDate} = useDate();
+  
   useEffect(() => {
-    fetchUserName();
-  }, [postAuthor]);
-  const fetchUserName = async () => {
-    const user = await fetch("http://localhost:5757/users/" + postAuthor)
-      .then((d) => d.json())
-      .then((d) => d);
-    setUser(user);
-  };
-  const formatDate = (stringIn) => {
-    const date = new Date(stringIn)
-    const y = date.getFullYear()
-    const m = date.getMonth()+1
-    const d = date.getDate()
-    const dateAsString = `${d}/${m}/${y}`
-    return dateAsString
-  }
+    fetchUserName(postAuthor);
+  }, []);
+  
 
   return (
     <Link to={`/post/${postId}`}>
@@ -64,8 +55,6 @@ const PostCard = ({ postId, authorImg, postAuthor, postDate, postText }) => {
           <div className={icon}>S</div>
         </div>
       </div>
-
-      
     </div>
     </Link>
   );
