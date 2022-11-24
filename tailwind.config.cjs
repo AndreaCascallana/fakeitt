@@ -6,6 +6,9 @@ module.exports = {
       fontFamily: {
         body: ["IBM Plex Sans", "sans-serif"],
       },
+      boxShadow: {
+        'post': ['0px 3px 8px rgba(0, 0, 0, 0.16)'],
+      }
     },
   },
   plugins: [],
