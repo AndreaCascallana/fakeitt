@@ -17,10 +17,10 @@ const usePostComments = () => {
         .then((d) => d.json())
         .then((d) => d);
 
-      // console.log(comments_);
+      
       setComments(comments_);
       setIsLoading(false);
-      console.log(comments_)
+      // console.log(comments_)
     } catch (e) {
       console.log(e);
       setHasError(true);
