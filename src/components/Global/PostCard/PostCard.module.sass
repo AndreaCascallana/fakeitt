@@ -1,26 +1,48 @@
 .postCard
-    @apply m-4 bg-slate-400 w-1/2
+    @apply p-6 w-1/2
+    // @apply rounded-md border-[1px] border-zinc-100
+    @apply border-b-[1px] border-zinc-200
     .cardData
-        @apply  flex gap-1
-        .avatar
-            @apply w-10
-        .author
-            @apply font-bold
-        .date
-            @apply font-sans
+        @apply flex items-center gap-4
+        @apply mb-4
+        .avatarContainer
+            .avatar
+                @apply w-14 h-14 flex flex-shrink-0
+                img
+                    @apply w-full h-full object-cover 
+                    @apply rounded-full
+        
+        .dataContainer
+            @apply flex justify-items-center gap-2
+            @apply text-orange-500
+            .author
+                @apply font-medium
+            .divider
+                @apply font-normal
+            .date
+                @apply font-sans
+                
     .cardContent
-        @apply my-1
         .cardTitle
-            @apply text-lg
+            @apply text-xl font-medium text-orange-500
+            @apply mb-1
         .cardText
-            @apply text-cyan-900
-    .postCtas
-        @apply flex gap-2 justify-end
-        .postCtaBlock
-            @apply flex gap-1
-            .icon
-                @apply w-4
-            .number
-                @apply text-xs
+            @apply text-zinc-600 max-w-prose text-base
+    
+    .bottomContent
+        @apply flex justify-end items-center
+        @apply mt-8
+        .postCtas
+            @apply flex gap-6
+            @apply text-orange-500
+            .postCtaBlock
+                @apply flex gap-2
+                .icon
+                    @apply text-base
+                .number
+                    @apply text-base
+        
+        .singlePostNavi
+            @apply font-normal
 
 
