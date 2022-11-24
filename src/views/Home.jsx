@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import PostCard from "../components/Global/PostCard/PostCard";
 import usePostsData from "../usePostsData";
+import {
+  homeContainer,
+  cardList,
+} from "./Home.module.sass";
+
 const Home = () => {
   const { posts, isLoading, hasError } = usePostsData();
   //console.log(posts)
@@ -17,19 +22,19 @@ const Home = () => {
   return (
     <>
       <div>Home</div>
-      <div className="cardList">
-        {posts.map((post) => (
-          <>
+      <div className={homeContainer}>
+        <div className={cardList}>
+          {posts.map((post) => (
             <PostCard
               key={post.id}
               postId={post.id}
-              authorImg={post.userId.userImg}
+              authorImg={post.userId}
               postAuthor={post.userId}
               postDate={post.date}
               postText={post.text}
             />
-          </>
-        ))}
+          ))}
+        </div>
       </div>
     </>
   );

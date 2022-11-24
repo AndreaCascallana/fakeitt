@@ -2,7 +2,14 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Routing from "./Routing";
 import classNames from "classnames";
-import AppStyles from "./App.module.sass";
+import {
+  app,
+  header,
+  logoContainer,
+  logo,
+  navi,
+  navItem
+} from "./App.module.sass";
 
 const App = () => {
   const navLinkClasses = ({ isActive }) =>
@@ -12,25 +19,25 @@ const App = () => {
     });
   // const routes = [{to: "/", label: "Home"}]
   return (
-    <div className={AppStyles.app}>
-      <div className={AppStyles.header}>
-        <div className={AppStyles.logo_container}>
+    <div className={app}>
+      <div className={header}>
+        <div className={logoContainer}>
           <NavLink className={(state) => navLinkClasses(state)} to="/">
             <img
-              className={AppStyles.logo}
+              className={logo}
               src="/img/fakeitt-isotipo.svg"
               alt="isotipo Fakeitt"
             />
           </NavLink>
         </div>
 
-        <nav className={AppStyles.navi}>
-          <div className={AppStyles.navItem}>
+        <nav className={navi}>
+          <div className={navItem}>
             <NavLink className={(state) => navLinkClasses(state)} to="/">
               Home
             </NavLink>
           </div>
-          <div className={AppStyles.navItem}>
+          <div className={navItem}>
             <NavLink
               className={(state) => navLinkClasses(state)}
               to="/profile/0762083f-b2ab-463e-972d-bb6f134694b1"
@@ -38,12 +45,12 @@ const App = () => {
               My Profile
             </NavLink>
           </div>
-          <div className={AppStyles.navItem}>
+          <div className={navItem}>
             <NavLink className={(state) => navLinkClasses(state)} to="/search">
               Search
             </NavLink>
           </div>
-          <div className={AppStyles.navItem}>
+          <div className={navItem}>
             <NavLink
               className={(state) => navLinkClasses(state)}
               to="/post/new"
