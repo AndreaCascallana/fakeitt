@@ -11,7 +11,7 @@ const useUserName = () => {
       setUser(user_);
     } catch (e) {
       console.log(e);
-      userDeleted = "[deleted]";
+      const userDeleted = "[deleted]";
       return userDeleted;
     }
   };
