@@ -7,6 +7,11 @@ import {
   cardList,
 } from "./Home.module.sass";
 
+import {
+  homeContainer,
+  cardList,
+} from "./Home.module.sass";
+
 const Home = () => {
   const { posts, isLoading, hasError } = usePostsData();
   //console.log(posts)
