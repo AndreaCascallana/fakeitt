@@ -13,8 +13,9 @@
     
     .newPostContent
         @apply flex gap-8
+        @apply w-2/3
         .avatar
-            @apply w-20 h-20 flex flex-shrink-0
+            @apply w-16 h-16 flex flex-shrink-0
             img
                 @apply w-full h-full object-cover 
                 @apply rounded-full
@@ -36,19 +37,22 @@
                         @apply outline-0 border-0
                         @apply text-base
                         @apply placeholder-zinc-300
+                        @apply max-w-prose
                     textarea
                         @apply resize-none h-28
                         @apply outline-0 border-0
                         @apply placeholder-zinc-500
+                        @apply max-w-prose
                     .postTitle
                         @apply text-lg font-medium text-black
                         @apply placeholder-zinc-500
                         
             .formCtas
                 .formControl
+                    @apply flex justify-end
                     button
-                        @apply bg-orange-600 text-white 
+                        @apply bg-primary text-white font-medium
                         @apply py-1 px-4 rounded-md
+                        @apply transition-colors duration-500
                         &:hover
-                            @apply bg-orange-700
-                            @apply transition-colors duration-500
+                            @apply bg-primary800
