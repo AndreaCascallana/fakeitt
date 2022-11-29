@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Global/Button/Button";
 import {
   newPostContainer,
@@ -18,6 +18,8 @@ import {
 const PostNew = () => {
   // FORMIK
   const [formStates, setFormStates] = useState([]);
+  const [hasError, setHasError] = useState(false);
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -28,52 +30,28 @@ const PostNew = () => {
       const formStates_ = [...formStates];
       formStates_.push(values);
       setFormStates(formStates_);
+
+      // ----------- validacion
+
+      addNewPost(values);
       formik.resetForm();
     },
   });
-
-  // POST NEW
-  const [postNew, setPostNew] = useState([]);
-  const [hasError, setHasError] = useState(false);
-
-  // useEffect(() => {
-  //   fetchPostNew();
-  // }, []);
-
-  //
-  const fetchPostNew = async () => {
+  
+  const addNewPost = async (values) => {
     try {
-      const myHeaders = new Headers().append(
-        "Content-Type",
-        "application/json"
-      );
-
-      const raw = JSON.stringify({
-        "date": "2022-11-24T11:01:33.928Z",
-        "text": "holaa",
-        "userId": "2",
-      });
-
-      const requestOptions = {
-        method:'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow',
-      };
-
-      const postNew_ = await fetch(
-        "http://localhost:5757/posts",
-        requestOptions
-      )
+      await fetch("http://localhost:5757/posts", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...values, date: new Date() }),
+        method: "POST",
+      })
         .then((d) => d.json())
         .then((d) => d);
-
-      setPostNew(postNew_);
-      console.log("post nuevo!");
-      console.log(postNew_);
+      navigate("/");
     } catch (e) {
       setHasError(true);
-      console.log("error!");
     }
   };
 
@@ -121,7 +99,7 @@ const PostNew = () => {
             <div className={formControl}>
               <button
                 type="submit"
-                onClick={fetchPostNew}
+                // onClick={fetchPostNew}
               >
                 Publicar
               </button>
