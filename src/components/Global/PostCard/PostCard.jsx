@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import useUserSingleData from "../../../views/User/useUserSingleData";
 import useDate from "../useDate";
 import useUserName from "../useUserName";
+import Profile from "../../../views/User/Profile";
 import {
   postCard,
   cardData,
+  avatarContainer,
   avatar,
+  dataContainer,
   author,
+  divider,
   date,
   cardContent,
   cardTitle,
@@ -18,67 +23,65 @@ import {
   bottomContent,
 } from "./PostCard.module.sass";
 
-const PostCard = ({ postId, authorImg, postAuthor, postDate, postText }) => {
-  
-  const{user,fetchUserName}=useUserName();
-  const {formatDate} = useDate();
-  
+const PostCard = ({ postId, authorImg, postAuthor, postDate, postText, userId }) => {
+  const { user, fetchUserName } = useUserName();
+  const { formatDate } = useDate();
+  const { userSingle } = useUserSingleData();
+
   useEffect(() => {
     fetchUserName(postAuthor);
   }, []);
-  
 
   return (
-    <Link to={`/post/${postId}`}>
-      <div className={postCard}>
-        <div className={cardData}>
-          <div className={avatarContainer}>
-            <div className={avatar}>
-              <img
-                src="https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-                alt="User's Avatar"
-              />
+    <>
+      <Link to={`/post/${postId}`}>
+        <div className={postCard}>
+          <div className={cardData}>
+            <div className={avatarContainer}>
+              <div className={avatar}>
+                <img
+                  src="https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
+                  alt="User's Avatar"
+                />
+              </div>
+            </div>
+
+            <div className={dataContainer}>
+              <div className={author}>
+                <Link to={`/users/${postAuthor}`} element={<Profile />}>
+                  {user.name} {user.fName}
+                </Link>
+              </div>
+              <div className={divider}>-</div>
+              <div className={date}>{formatDate(postDate)}</div>
             </div>
           </div>
 
-          <div className={dataContainer}>
-            <div className={author}>
-              {user.name} {user.fName}
+          <div className={cardContent}>
+            <div className={cardTitle}>
+              <Link to={`/posts/${postId}`}>Static Title</Link>
             </div>
-            <div className={divider}>-</div>
-            <div className={date}>{formatDate(postDate)}</div>
+            <div className={cardText}>{postText}</div>
+          </div>
+
+          <div className={bottomContent}>
+            <div className={postCtas}>
+              <div className={postCtaBlock}>
+                <div className={icon}>Comments</div>
+                <div className={number}>16</div>
+              </div>
+              <div className={postCtaBlock}>
+                <div className={icon}>Likes</div>
+                <div className={number}>16</div>
+              </div>
+              <div className={postCtaBlock}>
+                <div className={icon}>Share</div>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div className={cardContent}>
-          <div className={cardTitle}>
-            <Link to={`/posts/${postId}`}>Static Title</Link>
-          </div>
-          <div className={cardText}>{postText}</div>
-        </div>
-
-        <div className={bottomContent}>
-          <div className={postCtas}>
-            <div className={postCtaBlock}>
-              <div className={icon}>Comments</div>
-              {/* ¿Cómo hallamos los numbers de cada CTA? */}
-              <div className={number}>16</div>
-            </div>
-            <div className={postCtaBlock}>
-              <div className={icon}>Likes</div>
-              <div className={number}>16</div>
-            </div>
-            <div className={postCtaBlock}>
-              <div className={icon}>Share</div>
-            </div>
-          </div>
-
-          {/* <div className={singlePostNavi}>
-          <Link to={`/posts/${postId}`}>Go to single post</Link>
-        </div> */}
-        </div>
-      </div>
-    </Link>
+      </Link>
+    </>
   );
 };
 
