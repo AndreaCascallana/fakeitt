@@ -3,10 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import HeaderHome from "../components/Global/Headers/HeaderHome";
 import PostCard from "../components/Global/PostCard/PostCard";
 import usePostsData from "./Post/usePostsData";
-import {
-  homeContainer,
-  cardList,
-} from "./Home.module.sass";
+import { homeContainer, cardList } from "./Home.module.sass";
 
 const Home = () => {
   const { posts, isLoading, hasError } = usePostsData();
@@ -22,20 +19,18 @@ const Home = () => {
 
   return (
     <>
-      <HeaderHome/>
+      <HeaderHome />
       <div className="cardList">
         {posts.map((post) => (
-          
-            <PostCard
-              key={post.id}
-              postId={post.id}
-              authorImg={post.userId}
-              postAuthor={post.userId}
-              postDate={post.date}
-              postText={post.text}
-            />
-          ))}
-        </div>
+          <PostCard
+            key={post.id}
+            postId={post.id}
+            authorImg={post.userId}
+            postAuthor={post.userId}
+            postDate={post.date}
+            postText={post.text}
+          />
+        ))}
       </div>
     </>
   );
