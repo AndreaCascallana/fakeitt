@@ -26,7 +26,7 @@ const usePostsData = () => {
       // console.log(post_);
       setPost(post_);
       setIsLoading(false);
-      console.log(post_)
+      // console.log(post_)
     } catch (e) {
       console.log(e);
       setHasError(true);
@@ -37,27 +37,9 @@ const usePostsData = () => {
   };
 
 
-  const [user, setUser] = useState({});
   
-  const fetchUserName = async (userId) => {
-    const user = await fetch("http://localhost:5757/users/" + userId
-    )
-      .then((d) => d.json())
-      .then((d) => d);
-    setUser(user);
 
-  };
-
-  const formatDate = (stringIn) => {
-    const date = new Date(stringIn)
-    const y = date.getFullYear()
-    const m = date.getMonth()+1
-    const d = date.getDate()
-    const dateAsString = `${d}/${m}/${y}`
-    return dateAsString
-  }
-
-  return {fetchSinglePost, post, user, fetchUserName, formatDate, isLoading, hasError };
+  return {fetchSinglePost, post, isLoading, hasError };
 };
 
 export default usePostsData;

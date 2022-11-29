@@ -1,14 +1,28 @@
-import React, { useState } from "react";
-import { useFormik } from 'formik';
+import React, { useEffect, useState } from "react";
+import { useFormik } from "formik";
 import { Link } from "react-router-dom";
+import Button from "../../components/Global/Button/Button";
+import {
+  newPostContainer,
+  newPostNavigation,
+  close,
+  newPostContent,
+  avatar,
+  newPostFormContainer,
+  formControl,
+  formContent,
+  formCtas,
+  postTitle,
+} from "./PostNew.module.sass";
 
 const PostNew = () => {
+  // FORMIK
   const [formStates, setFormStates] = useState([]);
 
   const formik = useFormik({
     initialValues: {
       postTitle: "",
-      postText: "",
+      text: "",
     },
     onSubmit: (values) => {
       const formStates_ = [...formStates];
@@ -18,46 +32,103 @@ const PostNew = () => {
     },
   });
 
+  // POST NEW
+  const [postNew, setPostNew] = useState([]);
+  const [hasError, setHasError] = useState(false);
+
+  // useEffect(() => {
+  //   fetchPostNew();
+  // }, []);
+
+  //
+  const fetchPostNew = async () => {
+    try {
+      const myHeaders = new Headers().append(
+        "Content-Type",
+        "application/json"
+      );
+
+      const raw = JSON.stringify({
+        "date": "2022-11-24T11:01:33.928Z",
+        "text": "holaa",
+        "userId": "2",
+      });
+
+      const requestOptions = {
+        method:'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow',
+      };
+
+      const postNew_ = await fetch(
+        "http://localhost:5757/posts",
+        requestOptions
+      )
+        .then((d) => d.json())
+        .then((d) => d);
+
+      setPostNew(postNew_);
+      console.log("post nuevo!");
+      console.log(postNew_);
+    } catch (e) {
+      setHasError(true);
+      console.log("error!");
+    }
+  };
+
   return (
-    <div className="newPost">
-
-      <div className="avatar">
-        <img src="#" alt="User's Avatar" />
+    <div className={newPostContainer}>
+      <div className={newPostNavigation}>
+        <div className={close}>
+          <Link to="/">Cerrar</Link>
+        </div>
       </div>
 
-      <div className="div">
-        <Link to="/">
-          Cerrar
-        </Link>
+      <div className={newPostContent}>
+        <div className={avatar}>
+          <img
+            src="https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
+            alt="User's Avatar"
+          />
+        </div>
+
+        <form onSubmit={formik.handleSubmit} className={newPostFormContainer}>
+          <div className={formContent}>
+            <div className={formControl}>
+              {/* <label htmlFor="postTitle" className={postTitle}>Post Title:</label> */}
+              <input
+                className={postTitle}
+                type="text"
+                name="postTitle"
+                placeholder="Post Title"
+                onChange={formik.handleChange}
+                value={formik.values.postTitle}
+              />
+            </div>
+            <div className={formControl}>
+              {/* <label htmlFor="text">Post Text:</label> */}
+              <textarea
+                name="text"
+                placeholder="Post Content"
+                onChange={formik.handleChange}
+                value={formik.values.text}
+              />
+            </div>
+          </div>
+
+          <div className={formCtas}>
+            <div className={formControl}>
+              <button
+                type="submit"
+                onClick={fetchPostNew}
+              >
+                Publicar
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-
-      <form onSubmit={formik.handleSubmit}>
-        <div className="formControl">
-          <label htmlFor="postTitle">Post Title:</label>
-          <input
-            type="text"
-            name="postTitle"
-            placeholder="Post Title"
-            onChange={formik.handleChange}
-            value={formik.values.postTitle}
-          />
-        </div>
-        <div className="formControl">
-          <label htmlFor="postText">Post Text:</label>
-          <input
-            type="text"
-            name="postText"
-            placeholder="Post Text"
-            onChange={formik.handleChange}
-            value={formik.values.postText}
-          />
-        </div>
-        
-
-        <div className="formControl">
-          <button type="submit">Publicar</button>
-        </div>
-      </form>
 
       <div>
         <h4>Current form</h4>
@@ -70,9 +141,8 @@ const PostNew = () => {
           <pre key={i}>{JSON.stringify(fState)}</pre>
         ))}
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default PostNew
+export default PostNew;

@@ -1,9 +1,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useContext } from "react";
+
 import { useParams } from "react-router-dom";
-import { PostSingleContext } from "../contexts/PostSingleContext";
-import useSinglePostData from "../useSinglePostData";
+
+import useSinglePostData from "./useSinglePostData";
+
 import {
   postDiv,
   postData,
@@ -17,28 +18,36 @@ import {
   postCtaBlock,
   icon,
   number,
+  commentGroup
 } from "./PostSingle.module.sass";
+import usePostComments from "./usePostComments";
+
+import CommentAccordion from "../../components/CommentAccordion/CommentAccordion";
+import useUserName from "../../components/Global/useUserName";
+import useDate from "../../components/Global/useDate";
+
 const PostSingle = () => {
   const { postId } = useParams();
-  
-  
- 
+  const {isLoading, hasError, fetchSinglePost, post} = useSinglePostData();
+  const {user, fetchUserName} = useUserName();
+  const {formatDate}= useDate();
+  const { comments, fetchPostComments } = usePostComments();
 
-  const { isLoading,  hasError,fetchSinglePost, post, fetchUserName, user, formatDate} = useSinglePostData();
- 
-   // petición nada más cargar
-   useEffect(() => {
-    fetchSinglePost(postId);
-    
+  // petición nada más cargar
+    useEffect(() => {
+    fetchPostComments(postId);
+    fetchSinglePost(postId);    
   }, []);
+
+  
 
   //Petición cuando cambia el campo post.userId
   useEffect(() => {
     fetchUserName(post.userId);
-  }, [post.userId]);
-  
     
- 
+    
+  }, [post]);
+
   // guards
   if (hasError) {
     return <div>Error!</div>;
@@ -46,8 +55,20 @@ const PostSingle = () => {
   if (isLoading) {
     return <div>Loading..</div>;
   }
+  let commentList= comments.map((comment) => {
+    return(
+    <CommentAccordion
+      key={comment.id}
+      commentId={comment.id}
+      commentParent={comment.parent}
+      commentAuthor={comment.userId}
+      commentDate={comment.date}
+      commentText={comment.text}
+    />)
+   });
 
   return (
+    
     <>
       {/* <div>PostSingle {postId}</div> */}
       <div className={postDiv}>
@@ -55,7 +76,9 @@ const PostSingle = () => {
           <div className={avatar}>
             <img src="#" className="w-10" />
           </div>
-          <div className={author}>{user.name} {user.fName}</div>
+          <div className={author}>
+            {user.name} {user.fName}
+          </div>
           <div className={date}>{formatDate(post.date)}</div>
         </div>
         <div className={cardContent}>
@@ -76,6 +99,12 @@ const PostSingle = () => {
             <div className={icon}>S</div>
           </div>
         </div>
+      </div>
+      <div className={commentGroup}>
+        {/* Si el array está vacío, que salga el mensaje de wow cuanto vacío */}
+      {comments.length ? commentList : <p>Wow, cuánto vacío</p>}
+        
+        
       </div>
     </>
   );

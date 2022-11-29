@@ -1,0 +1,58 @@
+.newPostContainer
+    @apply max-w-[1080px] mx-auto
+    // @apply bg-slate-400
+
+    .newPostNavigation
+        @apply mb-10
+        .close
+            @apply text-zinc-600
+            @apply transition-colors duration-300
+
+            &:hover
+                @apply text-black
+    
+    .newPostContent
+        @apply flex gap-8
+        @apply w-2/3
+        .avatar
+            @apply w-16 h-16 flex flex-shrink-0
+            img
+                @apply w-full h-full object-cover 
+                @apply rounded-full
+        
+        .newPostFormContainer
+            @apply mb-10 mt-2
+            @apply w-full
+            .formContent
+                @apply mb-6 pb-6
+                @apply border-b-[1px] border-zinc-200
+                .formControl
+                    @apply flex flex-col
+                    @apply mb-4
+                    &:last-child
+                        @apply mb-0
+                    label
+                        @apply text-base
+                    input
+                        @apply outline-0 border-0
+                        @apply text-base
+                        @apply placeholder-zinc-300
+                        @apply max-w-prose
+                    textarea
+                        @apply resize-none h-28
+                        @apply outline-0 border-0
+                        @apply placeholder-zinc-500
+                        @apply max-w-prose
+                    .postTitle
+                        @apply text-lg font-medium text-black
+                        @apply placeholder-zinc-500
+                        
+            .formCtas
+                .formControl
+                    @apply flex justify-end
+                    button
+                        @apply bg-primary text-white font-medium
+                        @apply py-1 px-4 rounded-md
+                        @apply transition-colors duration-500
+                        &:hover
+                            @apply bg-primary800
