@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import HeaderHome from "../components/Global/Headers/HeaderHome";
 import PostCard from "../components/Global/PostCard/PostCard";
 import usePostsData from "./Post/usePostsData";
 import {
@@ -21,10 +22,10 @@ const Home = () => {
 
   return (
     <>
-      <div>Home</div>
-      <div className={homeContainer}>
-        <div className={cardList}>
-          {posts.map((post) => (
+      <HeaderHome/>
+      <div className="cardList">
+        {posts.map((post) => (
+          
             <PostCard
               key={post.id}
               postId={post.id}
