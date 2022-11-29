@@ -12,7 +12,7 @@ const usePostComments = () => {
     try {
       setIsLoading(true);
       const comments_ = await fetch(
-        "http://localhost:5757/comments?"+id+"&_order=asc&_sort=date"
+        "http://localhost:5757/comments?postId="+id+"&_order=asc&_sort=date"
       )
         .then((d) => d.json())
         .then((d) => d);

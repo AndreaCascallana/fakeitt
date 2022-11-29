@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import useDate from "../Global/useDate";
 import useUserName from "../Global/useUserName";
 import {
@@ -26,8 +26,6 @@ const CommentAccordion = ({
   const { formatDate } = useDate();
   const { fetchCommentReplies, replies } = useCommentReplies();
   const [repliesHTML, setRepliesHTML] = useState([]);
-  
-
 
   useEffect(() => {
     fetchUserName(commentAuthor);
@@ -35,59 +33,6 @@ const CommentAccordion = ({
     // paintCommentReplies();
   }, []);
 
-  // Por qué se me pinta el mismo reply para todos los comentarios?? 
-  // Tiene pinta que es porque paintreplies se lanza cada vez que cambia el array replies
-  // Pero si lo pinto en el primer UseEffect Directamente no se pintan.
-
-  let paintCommentReplies =()=>{
-    let repliesHTML_ = replies.map((reply,i) => {
-      //const {user} = useUserName();
-      // console.log(reply)
-      fetchUserName(reply.userId);
-      const replyUser = user;
-      //este User no coincide con el de UserId del reply
-
-
-      const replyDate = formatDate(reply.date);
-      const replyText = reply.text;
-      console.log(replyUser, reply);
-      return (
-        // <Reply key={reply.id}></Reply>
-        <div className={replyBox} key={i}>
-          <div className={author}>
-            {replyUser.name} {replyUser.fName}
-          </div>
-          <div className={commentData}>
-            <div className={date}>              
-              {replyDate}
-            </div>
-            <div className={separator}>·</div>
-            <div className={miniButton}>
-              <div className="icon">L</div>
-              <div className="counter">16</div>
-            </div>
-  
-            <div className={separator}>·</div>
-            <div className={miniButton}>
-              <div className="icon">C</div>
-            </div>
-          </div>
-          <div className={commentContent}>
-            {replyText}
-          </div>
-        </div>
-      );
-    });
-    setRepliesHTML(repliesHTML_);
-    return repliesHTML
-  }
-
-  useEffect(()=>{
-    paintCommentReplies();
-    
-  },[replies])
-
-  
 
   //Solo quiero que se me rendericen los comentarios que not ienen padres, y mapear sus respuestas.
   return (
@@ -112,9 +57,11 @@ const CommentAccordion = ({
             </div>
           </div>
           <div className={commentContent}>{commentText}</div>
-          {replies.length ? (
-            <div className={repliesBox}>{repliesHTML}</div>
-          ) : null}
+          <div className={repliesBox}>
+            {replies.map((reply, i) => (
+              <CommentReply reply={reply} key={i} />
+            ))}
+          </div>
         </div>
       ) : null}
     </>
@@ -122,3 +69,44 @@ const CommentAccordion = ({
 };
 
 export default CommentAccordion;
+
+const CommentReply = ({ reply }) => {
+  const { user, fetchUserName } = useUserName();
+  const { formatDate } = useDate();
+  const { fetchCommentReplies, replies } = useCommentReplies();
+  const [repliesHTML, setRepliesHTML] = useState([]);
+
+  useEffect(() => {
+    fetchUserName(reply.userId);
+    fetchCommentReplies(reply.id);
+  }, []);
+
+  return (
+    <>
+      <div className={replyBox}>
+        <div className={author}>
+          {user.name} {user.fName}
+        </div>
+        <div className={commentData}>
+          <div className={date}>{formatDate(reply.date)}</div>
+          <div className={separator}>·</div>
+          <div className={miniButton}>
+            <div className="icon">L</div>
+            <div className="counter">16</div>
+          </div>
+
+          <div className={separator}>·</div>
+          <div className={miniButton}>
+            <div className="icon">C</div>
+          </div>
+        </div>
+        <div className={commentContent}>{reply.text}</div>
+        <div className={repliesBox}>
+            {replies.map((reply_, i) => (
+              <CommentReply reply={reply_} key={i} />
+            ))}
+          </div>
+      </div>
+    </>
+  );
+};
