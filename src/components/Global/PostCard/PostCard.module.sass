@@ -1,33 +1,60 @@
-@import src/assets/style.sass
-.postCard
-    @apply m-4 w-1/2 p-6
-    @apply rounded-2xl
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16)
-    .cardData
-        @apply mb-6
-        @apply  flex gap-1
-        color: $primary-color
-        .avatar
-            @apply w-10
-        .author
-            @apply font-bold
-        .date
-            @apply font-sans
-    .cardContent
-        @apply mb-6
-        .cardTitle
-            @apply text-lg
-            color: $primary-color
-        .cardText
-            @apply text-cyan-900
-    .postCtas
-        @apply flex gap-2 justify-end
-        .postCtaBlock
-            @apply flex gap-1
-            .icon
-                @apply w-4
-                color: $primary-color
-            .number
-                @apply text-xs
+a
+    @apply max-w-fit
+    .postCard
+        @apply p-6
+        @apply rounded-2xl
 
+        /** estilo creado en un theme customizado de tailwind
+        /** ver en la hoja de tailwind.config.js
+        @apply shadow-post
+        // box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16)
 
+        // @apply rounded-md border-[1px] border-zinc-100
+        .cardData
+            @apply mb-6
+            @apply flex gap-4 items-center
+
+            /** estilo creado en un theme customizado de tailwind
+            /** ver en la hoja de tailwind.config.js
+            @apply text-primary
+            // color: $primary-color
+            .avatarContainer
+                .avatar
+                    @apply w-12 h-12
+                    @apply flex flex-shrink-0
+                    img
+                        @apply w-full h-full
+                        @apply object-cover
+                        @apply rounded-full
+
+            .dataContainer
+                @apply flex gap-2
+                .author
+                    @apply font-semibold
+                .divider
+                    @apply font-semibold
+                .date
+                    @apply font-sans
+        .cardContent
+            @apply mb-6
+            .cardTitle
+                @apply text-lg font-semibold
+                @apply text-primary
+                @apply mb-1
+                // color: $primary-color
+            .cardText
+                @apply max-w-prose
+                @apply text-zinc-700 font-normal text-base
+        .bottomContent
+            @apply flex justify-end items-center
+            @apply mt-8
+            .postCtas
+                @apply flex gap-6
+                @apply text-primary
+                .postCtaBlock
+                    @apply flex gap-2
+                    .icon
+                        @apply text-base
+                        // color: $primary-color
+                    .number
+                        @apply text-base
