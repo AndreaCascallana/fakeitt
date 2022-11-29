@@ -5,11 +5,8 @@ import useUserName from "../useUserName";
 import {
   postCard,
   cardData,
-  avatarContainer,
   avatar,
-  dataContainer,
   author,
-  divider,
   date,
   cardContent,
   cardTitle,
