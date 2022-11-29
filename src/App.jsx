@@ -15,7 +15,7 @@ const App = () => {
   const navLinkClasses = ({ isActive }) =>
     classNames({
       "text-zinc-500": !isActive,
-      "text-black": isActive,
+      "text-zinc-900": isActive,
     });
   // const routes = [{to: "/", label: "Home"}]
   return (
