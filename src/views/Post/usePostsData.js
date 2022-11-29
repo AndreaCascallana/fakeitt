@@ -16,7 +16,7 @@ const usePostsData = () => {
     try {
       setIsLoading(true);
       const posts_ = await fetch(
-        "http://localhost:5757/posts?_order=asc&_sort=date"
+        "http://localhost:5757/posts?_order=desc&_sort=date"
       )
         .then((d) => d.json())
         .then((d) => d);

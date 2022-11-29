@@ -18,7 +18,7 @@ import {
   postCtaBlock,
   icon,
   number,
-  commentGroup
+  commentGroup,
 } from "./PostSingle.module.sass";
 import usePostComments from "./usePostComments";
 
@@ -28,24 +28,20 @@ import useDate from "../../components/Global/useDate";
 
 const PostSingle = () => {
   const { postId } = useParams();
-  const {isLoading, hasError, fetchSinglePost, post} = useSinglePostData();
-  const {user, fetchUserName} = useUserName();
-  const {formatDate}= useDate();
+  const { isLoading, hasError, fetchSinglePost, post } = useSinglePostData();
+  const { user, fetchUserName } = useUserName();
+  const { formatDate } = useDate();
   const { comments, fetchPostComments } = usePostComments();
 
   // petición nada más cargar
-    useEffect(() => {
+  useEffect(() => {
     fetchPostComments(postId);
-    fetchSinglePost(postId);    
+    fetchSinglePost(postId);
   }, []);
-
-  
 
   //Petición cuando cambia el campo post.userId
   useEffect(() => {
     fetchUserName(post.userId);
-    
-    
   }, [post]);
 
   // guards
@@ -55,20 +51,20 @@ const PostSingle = () => {
   if (isLoading) {
     return <div>Loading..</div>;
   }
-  let commentList= comments.map((comment) => {
-    return(
-    <CommentAccordion
-      key={comment.id}
-      commentId={comment.id}
-      commentParent={comment.parent}
-      commentAuthor={comment.userId}
-      commentDate={comment.date}
-      commentText={comment.text}
-    />)
-   });
+  let commentList = comments.map((comment) => {
+    return (
+      <CommentAccordion
+        key={comment.id}
+        commentId={comment.id}
+        commentParent={comment.parent}
+        commentAuthor={comment.userId}
+        commentDate={comment.date}
+        commentText={comment.text}
+      />
+    );
+  });
 
   return (
-    
     <>
       {/* <div>PostSingle {postId}</div> */}
       <div className={postDiv}>
@@ -102,9 +98,7 @@ const PostSingle = () => {
       </div>
       <div className={commentGroup}>
         {/* Si el array está vacío, que salga el mensaje de wow cuanto vacío */}
-      {comments.length ? commentList : <p>Wow, cuánto vacío</p>}
-        
-        
+        {comments.length ? commentList : <p>Wow, cuánto vacío</p>}
       </div>
     </>
   );
