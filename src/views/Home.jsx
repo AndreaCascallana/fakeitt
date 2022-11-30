@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import HeaderHome from "../components/Global/Headers/HeaderHome";
 import PostCard from "../components/Global/PostCard/PostCard";
 import usePostsData from "./Post/usePostsData";
-import { homeContainer, cardList } from "./Home.module.sass";
+import {  cardList } from "./Home.module.sass";
 import BottomNav from "../components/Global/BottomNav/BottomNav";
 
 const Home = () => {
@@ -20,9 +20,8 @@ const Home = () => {
 
   return (
     <>
-      {/* <HeaderHome />
-      <BottomNav/> */}
-      <div className="cardList">
+      
+      <div className={cardList}>
         {posts.map((post) => (
           <PostCard
             key={post.id}

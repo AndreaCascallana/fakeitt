@@ -2,10 +2,7 @@ import React from "react";
 import { NavLink, useSearchParams } from "react-router-dom";
 import Routing from "./Routing";
 import classNames from "classnames";
-import {
-  app,
-  main
-} from "./App.module.sass";
+import { app, main, viewContainer } from "./App.module.sass";
 import useUserSingleData from "./views/User/useUserSingleData";
 import HeaderHome from "./components/Global/Headers/HeaderHome";
 import BottomNav from "./components/Global/BottomNav/BottomNav";
@@ -15,7 +12,7 @@ const App = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const userId = searchParams.get(userSingle.id);
-  
+
   const navLinkClasses = ({ isActive }) =>
     classNames({
       "text-zinc-500": !isActive,
@@ -25,8 +22,8 @@ const App = () => {
   return (
     <div className={app}>
       <HeaderHome />
-      <BottomNav/>
-      
+      <BottomNav />
+
       {/*
        *
        **** ¡¡IMPORTANTE!!
@@ -34,7 +31,9 @@ const App = () => {
        *
        */}
       <main className={main}>
-        <Routing />
+        <div className={viewContainer}>
+          <Routing />
+        </div>
       </main>
     </div>
   );
