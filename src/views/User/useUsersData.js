@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useNavigate } from "react";
 
 export const useUsersData = () => {
   const [users, setUsers] = useState([]);
@@ -23,6 +23,7 @@ export const useUsersData = () => {
       setUsers(users_);
     } catch (e) {
       setHasError(true);
+      navigate("/404")
     }
   };
 

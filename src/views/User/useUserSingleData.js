@@ -7,16 +7,16 @@ const useUserSingleData = () => {
   const [hasError, setHasError] = useState(false);
 
   // petición
-  useEffect(() => {
-    fetchUserSingle();
-  }, []);
+  // useEffect(() => {
+  //   fetchUserSingle();
+  // }, []);
 
   //fetch, loading and error controller
   const fetchUserSingle = async (id) => {
     try {
       setIsLoading(true);
       const userSingle_ = await fetch(
-        "http://localhost:5757/users?id=" + id
+        "http://localhost:5757/users/" + id
       )
         .then((d) => d.json())
         .then((d) => d);
@@ -29,7 +29,7 @@ const useUserSingleData = () => {
       setIsLoading(false);
     }
   };
-  return { userSingle, isLoading, hasError };
+  return { fetchUserSingle, userSingle, isLoading, hasError };
 };
 
 export default useUserSingleData;
