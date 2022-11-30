@@ -7,6 +7,7 @@ import {
     HomeIcon,
     MagnifyingGlassIcon,
     PlusIcon,
+    PlusCircleIcon,
     PencilIcon,
     TrashIcon
 
@@ -21,6 +22,7 @@ import {
     HomeIcon,
     MagnifyingGlassIcon,
     PlusIcon,
+    PlusCircleIcon,
     PencilIcon,
     TrashIcon
 
