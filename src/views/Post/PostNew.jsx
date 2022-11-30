@@ -74,7 +74,6 @@ const PostNew = () => {
         <form onSubmit={formik.handleSubmit} className={newPostFormContainer}>
           <div className={formContent}>
             <div className={formControl}>
-              {/* <label htmlFor="postTitle" className={postTitle}>Post Title:</label> */}
               <input
                 className={postTitle}
                 type="text"
@@ -85,7 +84,6 @@ const PostNew = () => {
               />
             </div>
             <div className={formControl}>
-              {/* <label htmlFor="text">Post Text:</label> */}
               <textarea
                 name="text"
                 placeholder="Post Content"
@@ -97,10 +95,7 @@ const PostNew = () => {
 
           <div className={formCtas}>
             <div className={formControl}>
-              <button
-                type="submit"
-                // onClick={fetchPostNew}
-              >
+              <button type="submit">
                 Publicar
               </button>
             </div>
