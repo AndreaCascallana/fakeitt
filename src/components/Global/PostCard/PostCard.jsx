@@ -4,6 +4,7 @@ import useUserSingleData from "../../../views/User/useUserSingleData";
 import useDate from "../useDate";
 import useUserName from "../useUserName";
 import Profile from "../../../views/User/Profile";
+import Button from "../Button/Button";
 import {
   postCard,
   cardData,
@@ -73,15 +74,15 @@ const PostCard = ({
         <div className={bottomContent}>
           <div className={postCtas}>
             <div className={postCtaBlock}>
-              <div className={icon}>Comments</div>
+              <div className={icon}><Button type='raw' icon='ChatBubbleLeftEllipsisIcon'></Button></div>
               <div className={number}>16</div>
             </div>
             <div className={postCtaBlock}>
-              <div className={icon}>Likes</div>
+              <div className={icon}><Button type='raw' icon='HeartIcon'></Button></div>
               <div className={number}>16</div>
             </div>
             <div className={postCtaBlock}>
-              <div className={icon}>Share</div>
+              <div className={icon}><Button type='raw' icon='ShareIcon'></Button></div>
             </div>
           </div>
         </div>
