@@ -1,6 +1,5 @@
 .newPostContainer
     @apply max-w-[1080px] mx-auto
-    // @apply bg-slate-400
 
     .newPostNavigation
         @apply mb-10
@@ -9,7 +8,7 @@
             @apply transition-colors duration-300
 
             &:hover
-                @apply text-black
+                @apply text-zinc-900
     
     .newPostContent
         @apply flex gap-8
@@ -44,15 +43,15 @@
                         @apply placeholder-zinc-500
                         @apply max-w-prose
                     .postTitle
-                        @apply text-lg font-medium text-black
+                        @apply text-lg font-medium text-zinc-900
                         @apply placeholder-zinc-500
                         
             .formCtas
                 .formControl
                     @apply flex justify-end
                     button
-                        @apply bg-primary text-white font-medium
+                        @apply bg-primary-600 text-white font-medium
                         @apply py-1 px-4 rounded-md
                         @apply transition-colors duration-500
                         &:hover
-                            @apply bg-primary800
+                            @apply bg-primary-800

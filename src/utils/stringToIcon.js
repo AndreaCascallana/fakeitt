@@ -9,8 +9,10 @@ import {
     PlusIcon,
     PlusCircleIcon,
     PencilIcon,
-    TrashIcon
-
+    TrashIcon,
+    ChatBubbleLeftEllipsisIcon,
+    ShareIcon,
+    XMarkIcon,
   } from '@heroicons/react/24/outline'
   
   const stringToIconDB = {
@@ -24,9 +26,10 @@ import {
     PlusIcon,
     PlusCircleIcon,
     PencilIcon,
-    TrashIcon
-
-
+    TrashIcon,
+    ChatBubbleLeftEllipsisIcon,
+    ShareIcon,
+    XMarkIcon,
   }
   
   export const stringToIcon = (iconAsString = '') => {

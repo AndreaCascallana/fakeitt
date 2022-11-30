@@ -1,16 +1,19 @@
 .header
-    @apply flex justify-between px-8 py-4
+    @apply py-4
     @apply shadow-navi
     @apply bg-white
     position: fixed
     top: 0
     width: 100vw
-    .logo_container
-        @apply w-8
-        .logo
-            @apply w-full h-full object-cover
-            
-    .navi
-        @apply flex gap-8
-        .navItem
-            @apply text-xs
+    .headerContainer
+        @apply max-w-[1080px] mx-auto
+        @apply flex justify-between
+        .logo_container
+            @apply w-8
+            .logo
+                @apply w-full h-full object-fill
+                
+        .navi
+            @apply flex gap-8
+            .navItem
+                @apply text-xs

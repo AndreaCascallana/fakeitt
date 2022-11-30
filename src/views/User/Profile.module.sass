@@ -1,0 +1,46 @@
+.profileContainer
+    @apply max-w-[1080px] mx-auto
+    @apply mt-10 mb-36
+    .topProfileContent
+        @apply mb-14
+        @apply flex justify-between
+        .userContent
+            @apply flex flex-col gap-4
+            .avatar
+                @apply w-24 h-24 flex flex-shrink-0
+                img
+                    @apply w-full h-full object-cover 
+                    @apply rounded-full
+            
+            .userMainInformation
+                @apply flex flex-col gap-1
+                @apply mb-2
+                .userName
+                    @apply text-xl font-semibold text-zinc-900
+                .userEmail
+                    @apply text-lg font-normal text-zinc-400
+            
+            .userSocialInformation
+                @apply flex gap-4
+                .item
+                    @apply flex gap-1
+                    .num
+                        @apply text-primary-600
+                    .itemText
+                        @apply text-primary-600
+        
+        .profileCtas
+            @apply items-end
+
+    .profileNaviContainer
+        .profileNavi
+            @apply flex gap-4
+            @apply mb-6
+            .navItem
+                @apply text-base
+    
+        .profileNaviContent
+            .postsContainer
+                @apply flex flex-col
+            // .commentsContainer
+            //     @apply flex flex-col
