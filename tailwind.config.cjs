@@ -18,7 +18,7 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['"IBM Plex Sans"', "sans-serif"],
+        body: ['"IBM Plex Sans"', "sans-serif"],
       },
       boxShadow: {
         'post': ['0px 3px 8px rgba(0, 0, 0, 0.16)'],
