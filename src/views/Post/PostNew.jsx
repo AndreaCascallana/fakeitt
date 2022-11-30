@@ -59,7 +59,7 @@ const PostNew = () => {
     <div className={newPostContainer}>
       <div className={newPostNavigation}>
         <div className={close}>
-          <Link to="/">Cerrar</Link>
+          <Link to="/"><Button type="raw" icon="XMarkIcon"/></Link>
         </div>
       </div>
 
