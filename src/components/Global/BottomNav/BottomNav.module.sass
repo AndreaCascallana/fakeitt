@@ -1,12 +1,14 @@
 .bottomNav
-    @apply flex justify-between p-8 py-4
+    @apply py-4
     @apply shadow-navi
     @apply bg-white
     position: fixed
     bottom: 0    
     width: 100vw
-    
-    .navi
-        @apply flex gap-8 justify-between w-full
-        .navItem
-            @apply text-xs
+    .bottomNavContainer
+        @apply max-w-[1080px] mx-auto
+        @apply flex justify-between
+        .navi
+            @apply flex gap-8 justify-between w-full
+            .navItem
+                @apply text-xs
