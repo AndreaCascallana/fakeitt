@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useUserSingleData from "./useUserSingleData";
-import useSinglePostData from "../../views/Post/useSinglePostData";
+import usePostsUserIdData from "./usePostsUserIdData";
 import Button from "../../components/Global/Button/Button";
 import PostCard from "../../components/Global/PostCard/PostCard";
 import {
@@ -19,24 +19,34 @@ import {
   profileCtas,
   profileNaviContainer,
   profileNavi,
-  navItem,
   profileNaviContent,
   postsContainer,
 } from "./Profile.module.sass";
+import TabItem from "../../components/Global/Tab/TabItem";
+import useTabItems from "../../components/Global/Tab/useTabItems";
+
 
 const UserSingle = () => {
-  const { fetchUserSingle, userSingle } = useUserSingleData();
   const { id } = useParams();
-  const { fetchSinglePost, post } = useSinglePostData();
+  const { fetchUserSingle, userSingle } = useUserSingleData();
+  const { fetchPostsUserId, postsUser } = usePostsUserIdData();
+
+  // tab items
+  const [activeIndex, updateActiveIndex ] = useTabItems();
 
   // petición nada más cargar
   useEffect(() => {
     fetchUserSingle(id);
-    fetchSinglePost(id);
   }, []);
 
+  // petición cuando cambia el campo userId
+  useEffect(() => {
+    fetchPostsUserId(id);
+  }, []);
 
-  return (    
+  console.log(postsUser);
+
+  return (
     <div className={profileContainer}>
       <div className={topProfileContent}>
         <div className={userContent}>
@@ -74,19 +84,33 @@ const UserSingle = () => {
 
       <div className={profileNaviContainer}>
         <div className={profileNavi}>
-          <div className={navItem}>Posts</div>
-          <div className={navItem}>Comments</div>
+          <TabItem
+            updateActiveIndex={updateActiveIndex}
+            index={1}
+            active={activeIndex == 1}
+          >
+            Posts
+          </TabItem>
+          <TabItem
+            updateActiveIndex={updateActiveIndex}
+            index={2}
+            active={activeIndex == 2}
+          >
+            Comments
+          </TabItem>
         </div>
         <div className={profileNaviContent}>
           <div className={postsContainer}>
-            <PostCard
-              key={post.id}
-              postId={post.id}
-              authorImg={post.userId}
-              postAuthor={post.userId}
-              postDate={post.date}
-              postText={post.text}
-            />
+            {/* {postsUser.map((post) => (
+              <PostCard
+                key={post.id}
+                postId={post.id}
+                authorImg={post.userId}
+                postAuthor={post.userId}
+                postDate={post.date}
+                postText={post.text}
+              />
+            ))} */}
           </div>
           {/* <div className={commentsContainer}>User Single Comments by user id</div> */}
         </div>
