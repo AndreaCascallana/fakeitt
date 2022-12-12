@@ -7,9 +7,7 @@ import CommentSingle from "./views/Comment/CommentSingle";
 import Home from "./views/Home";
 import Login from "./views/Login";
 import Page404 from "./views/Page404";
-import PostEdition from "./views/Post/PostEdition";
 import PostNew from "./views/Post/PostNew";
-import Posts from "./views/Post/Posts";
 import PostSingle from "./views/Post/PostSingle";
 import Register from "./views/Register";
 import Search from "./views/Search";
@@ -39,7 +37,6 @@ const Routing = () => {
       <Route path="/post">
         <Route path="new" element={<PostNew/>} />
         <Route path=":postId" element={<PostSingle/>} />
-        <Route path=":postId/edit" element={<PostEdition/>} />
       </Route>
 
       <Route path="/search">
