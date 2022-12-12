@@ -6,15 +6,16 @@ import {
   buttonFilled,
   buttonOutlined,
   buttonRaw,
+  buttonRounded,
 } from "./Button.module.sass";
 
 
-const Button = ({children, clickHandler,type, icon}) => {
+const Button = ({children, clickHandler, buttonType, icon}) => {
   const buttonClasses = classNames(button, {
-    [`${buttonFilled}`]: type == "filled",
-    [`${buttonOutlined}`]: type == "outlined",
-    [`${buttonRaw}`]: type == "raw",
-    
+    [`${buttonFilled}`]: buttonType == "filled",
+    [`${buttonOutlined}`]: buttonType == "outlined",
+    [`${buttonRaw}`]: buttonType == "raw",
+    [`${buttonRounded}`]: buttonType == "rounded",
   });
   const Icon= stringToIcon(icon)
   return (

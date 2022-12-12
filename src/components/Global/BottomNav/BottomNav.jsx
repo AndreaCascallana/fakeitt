@@ -21,7 +21,7 @@ const BottomNav = () => {
         <nav className={navi}>
           <div className={navItem}>
             <NavLink className={(state) => navLinkClasses(state)} to="/">
-              <Button type="raw" icon="HomeIcon"></Button>
+              <Button buttonType="raw" icon="HomeIcon"></Button>
             </NavLink>
           </div>
           <div className={navItem}>
@@ -29,12 +29,12 @@ const BottomNav = () => {
               className={(state) => navLinkClasses(state)}
               to="/post/new"
             >
-              <Button type="filled" icon="PlusCircleIcon"></Button>
+              <Button buttonType="rounded" icon="PlusIcon"></Button>
             </NavLink>
           </div>
           <div className={navItem}>
             <NavLink className={(state) => navLinkClasses(state)} to="/search">
-              <Button type="raw" icon="MagnifyingGlassIcon"></Button>
+              <Button buttonType="raw" icon="MagnifyingGlassIcon"></Button>
             </NavLink>
           </div>
         </nav>
