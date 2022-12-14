@@ -1,11 +1,32 @@
 .button
-    @apply p-2
     @apply rounded-lg
     &.buttonFilled
         @apply bg-primary-600
         @apply text-white
+        @apply py-1 px-3
+        @apply transition-colors duration-300
+        &:hover
+            @apply bg-primary-800
     &.buttonOutlined
         @apply border-2 border-primary-600
-        @apply text-primary-600
+        @apply text-primary-600 font-medium
+        @apply py-1 px-3
+        @apply transition-colors duration-300
+        &:hover
+            @apply bg-primary-50
     &.buttonRaw
+        @apply bg-white
         @apply text-primary-600
+        @apply rounded-full
+        @apply p-2
+        @apply transition-colors duration-700
+        &:hover
+            @apply bg-primary-50
+    &.buttonRounded
+        @apply bg-primary-600
+        @apply text-white
+        @apply rounded-full
+        @apply p-1
+        @apply transition-colors duration-300
+        &:hover
+            @apply bg-primary-700

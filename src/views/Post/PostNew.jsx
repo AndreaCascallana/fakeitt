@@ -44,7 +44,7 @@ const PostNew = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...values, date: new Date() }),
+        body: JSON.stringify({ ...values, date: new Date(), userId:"cea2fd15-b127-4062-b780-6fed8c7aa249" }),
         method: "POST",
       })
         .then((d) => d.json())
@@ -59,7 +59,7 @@ const PostNew = () => {
     <div className={newPostContainer}>
       <div className={newPostNavigation}>
         <div className={close}>
-          <Link to="/"><Button type="raw" icon="XMarkIcon"/></Link>
+          <Link to="/"><Button buttonType="raw" icon="XMarkIcon"/></Link>
         </div>
       </div>
 
@@ -95,9 +95,7 @@ const PostNew = () => {
 
           <div className={formCtas}>
             <div className={formControl}>
-              <button type="submit">
-                Publicar
-              </button>
+              <Button type="submit" buttonType="filled">Publicar</Button>
             </div>
           </div>
         </form>

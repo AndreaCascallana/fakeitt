@@ -21,18 +21,19 @@ import {
   profileNavi,
   profileNaviContent,
   postsContainer,
+  commentsContainer,
 } from "./Profile.module.sass";
 import TabItem from "../../components/Global/Tab/TabItem";
 import useTabItems from "../../components/Global/Tab/useTabItems";
-
+import CommentAccordion from "../../components/CommentAccordion/CommentAccordion";
+import useUserComments from "./useUserCommets";
 
 const UserSingle = () => {
   const { id } = useParams();
   const { fetchUserSingle, userSingle } = useUserSingleData();
   const { fetchPostsUserId, postsUser } = usePostsUserIdData();
-
-  // tab items
-  const [activeIndex, updateActiveIndex ] = useTabItems();
+  const { userComments, fetchUserComments } = useUserComments();
+  const [activeIndex, updateActiveIndex] = useTabItems();
 
   // petición nada más cargar
   useEffect(() => {
@@ -41,10 +42,35 @@ const UserSingle = () => {
 
   // petición cuando cambia el campo userId
   useEffect(() => {
+    fetchUserComments(id);
     fetchPostsUserId(id);
-  }, []);
+  }, [id]);
 
-  console.log(postsUser);
+  let commentList = userComments.map((comment) => {
+    return (
+      <CommentAccordion
+        key={comment.id}
+        commentId={comment.id}
+        commentParent={comment.parent}
+        commentAuthor={comment.userId}
+        commentDate={comment.date}
+        commentText={comment.text}
+      />
+    );
+  });
+
+  let renderPostCard = postsUser.map((post) => {
+    return (
+      <PostCard
+        key={post.id}
+        postId={post.id}
+        authorImg={post.userId}
+        postAuthor={post.userId}
+        postDate={post.date}
+        postText={post.text}
+      />
+    );
+  });
 
   return (
     <div className={profileContainer}>
@@ -78,7 +104,7 @@ const UserSingle = () => {
         </div>
 
         <div className={profileCtas}>
-          <Button type="filled">Follow</Button>
+          <Button buttonType="filled">Follow</Button>
         </div>
       </div>
 
@@ -100,19 +126,16 @@ const UserSingle = () => {
           </TabItem>
         </div>
         <div className={profileNaviContent}>
+          {console.log(activeIndex)}
+          {console.log(postsUser)}
+          {console.log(userComments)}
+
           <div className={postsContainer}>
-            {/* {postsUser.map((post) => (
-              <PostCard
-                key={post.id}
-                postId={post.id}
-                authorImg={post.userId}
-                postAuthor={post.userId}
-                postDate={post.date}
-                postText={post.text}
-              />
-            ))} */}
+            {activeIndex == 1 ? (postsUser.length ? renderPostCard : null) : null}
           </div>
-          {/* <div className={commentsContainer}>User Single Comments by user id</div> */}
+          <div className={commentsContainer}>
+            {activeIndex == 2 ? (userComments.length ? commentList : null) : null}
+          </div>
         </div>
       </div>
     </div>
