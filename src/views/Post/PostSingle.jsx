@@ -25,6 +25,7 @@ import usePostComments from "./usePostComments";
 import CommentAccordion from "../../components/CommentAccordion/CommentAccordion";
 import useUserName from "../../components/Global/useUserName";
 import useDate from "../../components/Global/useDate";
+import CommentLikeBarPost from "../../components/CommentLikeBar/CommentLikeBarPost";
 
 const PostSingle = () => {
   const { postId } = useParams();
@@ -81,20 +82,8 @@ const PostSingle = () => {
           <div className={cardTitle}>Static Title</div>
           <div className={cardText}>{post.text}</div>
         </div>
-        <div className={postCtas}>
-          <div className={postCtaBlock}>
-            <div className={icon}>C</div>
-            {/* ¿Cómo hallamos los numbers de cada CTA? */}
-            <div className={number}>16</div>
-          </div>
-          <div className={postCtaBlock}>
-            <div className={icon}>L</div>
-            <div className={number}>16</div>
-          </div>
-          <div className={postCtaBlock}>
-            <div className={icon}>S</div>
-          </div>
-        </div>
+        <CommentLikeBarPost/>
+        
       </div>
       <div className={commentGroup}>
         {/* Si el array está vacío, que salga el mensaje de wow cuanto vacío */}

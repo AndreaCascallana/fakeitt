@@ -13,6 +13,7 @@ import {
     ChatBubbleLeftEllipsisIcon,
     ShareIcon,
     XMarkIcon,
+    ChevronDownIcon
   } from '@heroicons/react/24/outline'
   
   const stringToIconDB = {
@@ -30,6 +31,7 @@ import {
     ChatBubbleLeftEllipsisIcon,
     ShareIcon,
     XMarkIcon,
+    ChevronDownIcon
   }
   
   export const stringToIcon = (iconAsString = '') => {

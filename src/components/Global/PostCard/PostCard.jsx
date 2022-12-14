@@ -23,6 +23,7 @@ import {
   number,
   bottomContent,
 } from "./PostCard.module.sass";
+import CommentLikeBarPost from "../../CommentLikeBar/CommentLikeBarPost";
 
 const PostCard = ({
   postId,
@@ -68,11 +69,13 @@ const PostCard = ({
           <div className={cardTitle}>
             <Link to={`/post/${postId}`}>Static Title</Link>
           </div>
-          <div className={cardText}>{postText}</div>
+          <div className={cardText}><Link to={`/post/${postId}`}>{postText}</Link></div>
         </div>
 
         <div className={bottomContent}>
-          <div className={postCtas}>
+          <CommentLikeBarPost/>
+
+          {/* <div className={postCtas}>
             <div className={postCtaBlock}>
               <div className={icon}><Button buttonType='raw' icon='ChatBubbleLeftEllipsisIcon'></Button></div>
               <div className={number}>16</div>
@@ -84,7 +87,7 @@ const PostCard = ({
             <div className={postCtaBlock}>
               <div className={icon}><Button buttonType='raw' icon='ShareIcon'></Button></div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
