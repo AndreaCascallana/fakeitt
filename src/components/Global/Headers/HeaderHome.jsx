@@ -36,7 +36,7 @@ const HeaderHome = () => {
               className={(state) => navLinkClasses(state)}
               to="/users/cea2fd15-b127-4062-b780-6fed8c7aa249"
             >
-              <Button type="raw" icon="UserIcon"></Button>
+              <Button buttonType="raw" icon="UserIcon"></Button>
             </NavLink>
           </div>
         </nav>

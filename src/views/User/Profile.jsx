@@ -78,7 +78,7 @@ const UserSingle = () => {
         </div>
 
         <div className={profileCtas}>
-          <Button type="filled">Follow</Button>
+          <Button buttonType="filled">Follow</Button>
         </div>
       </div>
 
