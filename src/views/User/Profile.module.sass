@@ -1,6 +1,14 @@
 .profileContainer
     @apply max-w-[1080px] mx-auto
     @apply mt-10 mb-36
+    
+    @media (max-width: 1100px)
+        @apply max-w-[768px]
+
+    @media (max-width: 768px)
+        @apply max-w-[325px]
+        @apply mt-6 mb-24
+
     .topProfileContent
         @apply mb-14
         @apply flex justify-between
