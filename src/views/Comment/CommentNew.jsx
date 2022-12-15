@@ -1,7 +1,8 @@
 import { React, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import Button from "../../components/Global/Button/Button";
 import { useFormik } from "formik";
+import useSinglePostData from "./../Post/useSinglePostData"
 import {
   newCommentContainer,
   newCommentNavigation,
@@ -15,19 +16,39 @@ import {
 
 
 } from "./CommentNew.module.sass";
+import { useEffect } from "react";
+import useSingleCommentData from "./useSingleCommentData";
+import useUserName from "./../../components/Global/useUserName";
 
 const CommentNew = () => {
   const [formStates, setFormStates] = useState([]);
+
+  const {fetchSinglePost, post } = useSinglePostData();
   const [hasError, setHasError] = useState(false);
 
-  const date = new Date();
+  const {postId}=useParams()
+  let [searchParams, setSearchParams] = useSearchParams();
 
-  const y = date.getFullYear();
-  const m = date.getMonth() + 1;
-  const d = date.getDate();
-  const dateAsString = `${d}/${m}/${y}`;
+  const parentComment= searchParams.get('parent')
+  // console.log(searchParams.get('parent'));
 
-  console.log(dateAsString);
+  const { commentSingle, fetchCommentById } = useSingleCommentData();
+  const { user, fetchUserName } = useUserName();
+  
+
+  useEffect(() => {
+    fetchSinglePost(postId);
+    fetchCommentById(parentComment)
+    // console.log(commentSingle)
+  }, []);
+  useEffect(()=>{
+    fetchUserName(commentSingle.userId)
+    
+
+  },[commentSingle]);
+ 
+  // post no tiene elemento title, pero lo sacariamos de post.title
+  
 
   //FORMIK
 
@@ -54,8 +75,8 @@ const CommentNew = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...values, date: new Date(), userId: "myUserId", postId: "parentPostId",
-        parent: null }),
+        body: JSON.stringify({ ...values, date: new Date(), userId: "myUserId", postId: postId,
+        parent: parentComment }),
         method: "POST",
       })
         .then((d) => d.json())
@@ -85,7 +106,10 @@ const CommentNew = () => {
               alt="User's Avatar"
             />
           </div>
-          <div className={parentPostName}>En respuesta a Post Padre</div>
+          <div className={parentPostName}>En respuesta a 
+          {parentComment == null ? ` Post ${postId}`: ` Comment by ${user.name} ${user.fName}`}
+          
+          </div>
           <div>
             <Button type="raw" icon="ChevronDownIcon" />
           </div>
@@ -107,12 +131,12 @@ const CommentNew = () => {
             </div>
           </div>
         </form>
-        <div>
+        {/* <div>
           <h4>Saved form states</h4>
           {formStates.map((fState, i) => (
             <pre key={i}>{JSON.stringify(fState)}</pre>
           ))}
-        </div>
+        </div> */}
       </div>
     </>
   );

@@ -7,11 +7,11 @@ import { actionBar,
 
  } from "./CommentLikeBarPost.module.sass";
 
-const CommentLikeBarPost = () => {
+const CommentLikeBarPost = ({parentPost}) => {
   return (
     <div className={actionBar}>
       <div className={ctaBlock}>
-        <Link to={`/comments/new`}>
+        <Link to={`/post/${parentPost}/comment/new`}>
           <Button type="raw" icon="ChatBubbleLeftEllipsisIcon" />
         </Link>
 

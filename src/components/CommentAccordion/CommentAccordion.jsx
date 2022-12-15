@@ -1,5 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import Button from "../Global/Button/Button";
 import useDate from "../Global/useDate";
 import useUserName from "../Global/useUserName";
 import {
@@ -25,14 +27,17 @@ const CommentAccordion = ({
   const { user, fetchUserName } = useUserName();
   const { formatDate } = useDate();
   const { fetchCommentReplies, replies } = useCommentReplies();
-  const [repliesHTML, setRepliesHTML] = useState([]);
+  
+  const {postId} = useParams();
+
+  
+  
 
   useEffect(() => {
     fetchUserName(commentAuthor);
     fetchCommentReplies(commentId);
     // paintCommentReplies();
   }, []);
-
 
   //Solo quiero que se me rendericen los comentarios que not ienen padres, y mapear sus respuestas.
   return (
@@ -46,13 +51,16 @@ const CommentAccordion = ({
             <div className={date}>{formatDate(commentDate)}</div>
             <div className={separator}>·</div>
             <div className={miniButton}>
-              <div className="icon">L</div>
+              {/* Aquí vamos a tener que hacer cambio de estado según si he dado like o no, y sustituir icono */}
+              <Button type="raw" icon="HeartIcon"></Button>
               <div className="counter">16</div>
             </div>
 
             <div className={separator}>·</div>
             <div className={miniButton}>
-              <div className="icon">C</div>
+              <Link to={`/post/${postId}/comment/new?parent=${commentId}`}>
+                <Button type="raw" icon="ChatBubbleLeftEllipsisIcon" />
+              </Link>
               <div className="counter">{replies.length}</div>
             </div>
           </div>
@@ -74,7 +82,8 @@ const CommentReply = ({ reply }) => {
   const { user, fetchUserName } = useUserName();
   const { formatDate } = useDate();
   const { fetchCommentReplies, replies } = useCommentReplies();
-  const [repliesHTML, setRepliesHTML] = useState([]);
+  
+  const {postId} = useParams();
 
   useEffect(() => {
     fetchUserName(reply.userId);
@@ -91,21 +100,25 @@ const CommentReply = ({ reply }) => {
           <div className={date}>{formatDate(reply.date)}</div>
           <div className={separator}>·</div>
           <div className={miniButton}>
-            <div className="icon">L</div>
+            {/* Aquí vamos a tener que hacer cambio de estado según si he dado like o no, y sustituir icono */}
+            <Button type="raw" icon="HeartIcon"></Button>
             <div className="counter">16</div>
           </div>
 
           <div className={separator}>·</div>
           <div className={miniButton}>
-            <div className="icon">C</div>
+            <Link to={`/post/${postId}/comment/new?parent=${reply.id}`}>
+              <Button type="raw" icon="ChatBubbleLeftEllipsisIcon" />
+              
+            </Link>
           </div>
         </div>
         <div className={commentContent}>{reply.text}</div>
         <div className={repliesBox}>
-            {replies.map((reply_, i) => (
-              <CommentReply reply={reply_} key={i} />
-            ))}
-          </div>
+          {replies.map((reply_, i) => (
+            <CommentReply reply={reply_} key={i} />
+          ))}
+        </div>
       </div>
     </>
   );
