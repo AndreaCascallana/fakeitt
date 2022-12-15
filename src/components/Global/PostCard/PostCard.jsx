@@ -17,10 +17,7 @@ import {
   cardContent,
   cardTitle,
   cardText,
-  postCtas,
-  postCtaBlock,
-  icon,
-  number,
+
   bottomContent,
 } from "./PostCard.module.sass";
 import CommentLikeBarPost from "../../CommentLikeBar/CommentLikeBarPost";
@@ -73,21 +70,11 @@ const PostCard = ({
         </div>
 
         <div className={bottomContent}>
-          <CommentLikeBarPost/>
+          <CommentLikeBarPost
+            parentPost={postId}
+          />
 
-          {/* <div className={postCtas}>
-            <div className={postCtaBlock}>
-              <div className={icon}><Button buttonType='raw' icon='ChatBubbleLeftEllipsisIcon'></Button></div>
-              <div className={number}>16</div>
-            </div>
-            <div className={postCtaBlock}>
-              <div className={icon}><Button buttonType='raw' icon='HeartIcon'></Button></div>
-              <div className={number}>16</div>
-            </div>
-            <div className={postCtaBlock}>
-              <div className={icon}><Button buttonType='raw' icon='ShareIcon'></Button></div>
-            </div>
-          </div> */}
+         
         </div>
       </div>
     </>
