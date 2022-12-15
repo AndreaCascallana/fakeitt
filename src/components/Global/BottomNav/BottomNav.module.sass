@@ -8,6 +8,13 @@
     .bottomNavContainer
         @apply max-w-[1080px] mx-auto
         @apply flex justify-between items-center
+
+        @media (max-width: 1100px)
+            @apply max-w-[768px]
+
+        @media (max-width: 768px)
+            @apply max-w-[325px]
+
         .navi
             @apply flex gap-8 justify-between w-full items-center
             .navItem

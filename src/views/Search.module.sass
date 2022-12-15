@@ -1,0 +1,23 @@
+.searchFormContainer
+    @apply max-w-[1080px] mx-auto
+    @apply mt-10
+    
+    @media (max-width: 1100px)
+        @apply max-w-[768px]
+
+    @media (max-width: 768px)
+        @apply max-w-[325px]
+
+    .formControl
+        input
+            @apply w-full
+            @apply border-[1px] border-zinc-200 rounded-md
+            @apply py-2 px-4
+            @apply relative
+            
+            &:focus-visible
+                @apply outline-0
+                @apply shadow-spread
+
+        button
+            @apply absolute top-[124px] right-[148px]

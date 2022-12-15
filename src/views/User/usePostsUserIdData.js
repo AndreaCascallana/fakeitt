@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const usePostsUserIdData = () => {
   //
-  const [postsUser, setPostUser] = useState({})
+  const [postsUser, setPostUser] = useState([])
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
 
@@ -25,7 +25,7 @@ const usePostsUserIdData = () => {
   };
 
   
-  return {fetchPostsUserId, postsUser, isLoading, hasError };
+  return { postsUser, fetchPostsUserId, isLoading, hasError };
 };
 
 export default usePostsUserIdData;
