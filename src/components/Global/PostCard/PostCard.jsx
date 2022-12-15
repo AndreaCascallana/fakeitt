@@ -17,10 +17,7 @@ import {
   cardContent,
   cardTitle,
   cardText,
-  postCtas,
-  postCtaBlock,
-  icon,
-  number,
+
   bottomContent,
 } from "./PostCard.module.sass";
 import CommentLikeBarPost from "../../CommentLikeBar/CommentLikeBarPost";
@@ -74,7 +71,7 @@ const PostCard = ({
 
         <div className={bottomContent}>
           <CommentLikeBarPost
-            parentPostId = {postId}
+            parentPost={postId}
           />
 
          
