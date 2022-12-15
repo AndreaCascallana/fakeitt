@@ -1,8 +1,18 @@
 .newPostContainer
     @apply max-w-[1080px] mx-auto
+    
+    @media (max-width: 1100px)
+        @apply max-w-[768px]
+
+    @media (max-width: 768px)
+        @apply max-w-[325px]
+        @apply h-full
+        @apply flex flex-col items-end
 
     .newPostNavigation
         @apply mb-10
+        @media (max-width: 768px)
+            @apply mb-5
         .close
             @apply text-zinc-600
             @apply transition-colors duration-300
@@ -13,8 +23,13 @@
     .newPostContent
         @apply flex gap-8
         @apply w-2/3
+        @media (max-width: 768px)
+            @apply flex flex-col gap-2
+            @apply w-full
         .avatar
             @apply w-16 h-16 flex flex-shrink-0
+            @media (max-width: 768px)
+                @apply w-12 h-12
             img
                 @apply w-full h-full object-cover 
                 @apply rounded-full
@@ -22,6 +37,7 @@
         .newPostFormContainer
             @apply mb-10 mt-2
             @apply w-full
+
             .formContent
                 @apply mb-6 pb-6
                 @apply border-b-[1px] border-zinc-200
@@ -42,6 +58,8 @@
                         @apply outline-0 border-0
                         @apply placeholder-zinc-500
                         @apply max-w-prose
+                        @media (max-width: 768px)
+                            height: calc( 100vh - 26rem)
                     .postTitle
                         @apply text-lg font-medium text-zinc-900
                         @apply placeholder-zinc-500

@@ -101,17 +101,17 @@ const PostNew = () => {
         </form>
       </div>
 
-      <div>
+      {/* <div>
         <h4>Current form</h4>
         <pre>{JSON.stringify(formik.values)}</pre>
-      </div>
+      </div> */}
 
-      <div>
+      {/* <div>
         <h4>Saved form states</h4>
         {formStates.map((fState, i) => (
           <pre key={i}>{JSON.stringify(fState)}</pre>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
