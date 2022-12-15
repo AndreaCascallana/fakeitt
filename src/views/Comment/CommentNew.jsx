@@ -27,11 +27,11 @@ const CommentNew = () => {
   const [hasError, setHasError] = useState(false);
 
   const {postId}=useParams()
+
   let [searchParams, setSearchParams] = useSearchParams();
-
   const parentComment= searchParams.get('parent')
-  // console.log(searchParams.get('parent'));
-
+  
+  //HOOKS
   const { commentSingle, fetchCommentById } = useSingleCommentData();
   const { user, fetchUserName } = useUserName();
   
@@ -116,7 +116,7 @@ const CommentNew = () => {
         </div>
         <form onSubmit={formik.handleSubmit} className={formContent}>
           <div className={formControl}>
-            {/* <label htmlFor="commentContent">Name:</label> */}
+            
             <textarea
               type="text"
               name="text"
@@ -131,12 +131,8 @@ const CommentNew = () => {
             </div>
           </div>
         </form>
-        {/* <div>
-          <h4>Saved form states</h4>
-          {formStates.map((fState, i) => (
-            <pre key={i}>{JSON.stringify(fState)}</pre>
-          ))}
-        </div> */}
+        {/* Queda Añadir onclick que haga salir un mensaje de confirmacion y nos haga navegar a la página anterior */}
+        
       </div>
     </>
   );
