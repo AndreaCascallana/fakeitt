@@ -22,8 +22,9 @@ module.exports = {
       },
       boxShadow: {
         'post': ['0px 3px 8px rgba(0, 0, 0, 0.16)'],
-        'navi': ['0px 2px 16px rgba(0, 0, 0, 0.08)']
-      }
+        'navi': ['0px 2px 16px rgba(0, 0, 0, 0.08)'],
+        'spread': ['0px 0px 0px 4px rgba(254, 232, 230, 1)'],
+      },
     },
   },
   plugins: [],
