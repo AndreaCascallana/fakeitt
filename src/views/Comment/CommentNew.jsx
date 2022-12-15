@@ -45,7 +45,7 @@ const CommentNew = () => {
     fetchUserName(commentSingle.userId)
     
 
-  },[commentSingle]);
+  },[parentComment]);
  
   // post no tiene elemento title, pero lo sacariamos de post.title
   
