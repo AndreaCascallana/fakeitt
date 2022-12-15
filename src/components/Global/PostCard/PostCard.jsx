@@ -73,21 +73,11 @@ const PostCard = ({
         </div>
 
         <div className={bottomContent}>
-          <CommentLikeBarPost/>
+          <CommentLikeBarPost
+            parentPostId = {postId}
+          />
 
-          {/* <div className={postCtas}>
-            <div className={postCtaBlock}>
-              <div className={icon}><Button buttonType='raw' icon='ChatBubbleLeftEllipsisIcon'></Button></div>
-              <div className={number}>16</div>
-            </div>
-            <div className={postCtaBlock}>
-              <div className={icon}><Button buttonType='raw' icon='HeartIcon'></Button></div>
-              <div className={number}>16</div>
-            </div>
-            <div className={postCtaBlock}>
-              <div className={icon}><Button buttonType='raw' icon='ShareIcon'></Button></div>
-            </div>
-          </div> */}
+         
         </div>
       </div>
     </>
