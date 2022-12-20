@@ -126,9 +126,9 @@ const UserSingle = () => {
           </TabItem>
         </div>
         <div className={profileNaviContent}>
-          {console.log(activeIndex)}
+          {/* {console.log(activeIndex)}
           {console.log(postsUser)}
-          {console.log(userComments)}
+          {console.log(userComments)} */}
 
           <div className={postsContainer}>
             {activeIndex == 1 ? (postsUser.length ? renderPostCard : null) : null}
