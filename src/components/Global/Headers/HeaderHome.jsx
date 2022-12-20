@@ -34,7 +34,7 @@ const HeaderHome = () => {
           <div className={navItem}>
             <NavLink
               className={(state) => navLinkClasses(state)}
-              to="/users/cea2fd15-b127-4062-b780-6fed8c7aa249"
+              to="/users/6c43f083-9286-4a15-9d44-d27f75e7fef6"
             >
               <Button buttonType="raw" icon="UserIcon"></Button>
             </NavLink>

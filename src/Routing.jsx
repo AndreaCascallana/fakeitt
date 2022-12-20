@@ -30,13 +30,13 @@ const Routing = () => {
 
       <Route path="/comments">        
         <Route path=":commentId" element={<CommentSingle />} />
-        <Route path=":commentId/edit" element={<CommentEdition />} />
+        {/* <Route path=":commentId/edit" element={<CommentEdition />} /> */}
       </Route>
 
       <Route path="/post">
         <Route path="new" element={<PostNew/>} />
         <Route path=":postId" element={<PostSingle/>} />
-        <Route path=":postId/edit" element={<PostEdition/>} />
+        {/* <Route path=":postId/edit" element={<PostEdition/>} /> */}
         <Route path=":postId/comment/new" element={<CommentNew />} />
         <Route path=":postId/comment/new?parent=" element={<CommentNew />} />
       </Route>

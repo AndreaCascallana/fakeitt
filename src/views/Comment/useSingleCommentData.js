@@ -17,7 +17,7 @@ const useSingleCommentData = () => {
 
       setCommentSingle(commentSingle_);
       setIsLoading(false);
-      console.log(commentSingle_);
+      // console.log(commentSingle_);
     } catch (e) {
       console.log(e);
       setHasError(true);
