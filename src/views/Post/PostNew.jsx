@@ -44,7 +44,7 @@ const PostNew = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...values, date: new Date(), userId:"cea2fd15-b127-4062-b780-6fed8c7aa249" }),
+        body: JSON.stringify({ ...values, date: new Date(), userId:"6c43f083-9286-4a15-9d44-d27f75e7fef6" }),
         method: "POST",
       })
         .then((d) => d.json())
