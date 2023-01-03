@@ -40,8 +40,12 @@ const CommentAccordion = ({
   }, []);
 
   //Solo quiero que se me rendericen los comentarios que not ienen padres, y mapear sus respuestas.
+  // HAY CONFLICTO entre el contador de respuestas al posts y los comentarios mapeados.
+  //Al quitar el condicional, sí salen estos comentarios. Debe ser que en el servidor están isncritos como que tienen padre, 
+  //pero no está el padre.
   return (
     <>
+      
       {commentParent !== null ? (
         <div className={commentBox}>
           <div className={author}>
