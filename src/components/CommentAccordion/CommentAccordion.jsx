@@ -115,12 +115,13 @@ const CommentReply = ({ reply }) => {
               <Button type="raw" icon="ChatBubbleLeftEllipsisIcon" />
             </Link>
           </div>
+          <div className={miniButton}>
+            <Link to={`/post/${postId}/edit?parent=${reply.id}`}>
+              <Button type="raw" icon="PencilIcon" />
+            </Link>
+          </div>
         </div>
-        <div className={miniButton}>
-          <Link to={`/post/${postId}/edit?parent=${reply.id}`}>
-            <Button type="raw" icon="PencilIcon" />
-          </Link>
-        </div>
+
         <div className={commentContent}>{reply.text}</div>
         <div className={repliesBox}>
           {replies.map((reply_, i) => (
