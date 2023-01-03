@@ -1,4 +1,5 @@
 import React from "react";
+import CommentNewContextProvider from "./CommentNewContext";
 import EditingUserContextProvider from "./EditingUserContext";
 import MainContextProvider from "./MainContext";
 import SearchContextProvider from "./SearchContext";
@@ -12,7 +13,9 @@ const SuperContext = ({ children }) => {
         <UsersContextProvider>
           <UserSingleContext>
             <EditingUserContextProvider>
+              <CommentNewContextProvider>
               {children}
+              </CommentNewContextProvider>
             </EditingUserContextProvider>
           </UserSingleContext>
         </UsersContextProvider>
