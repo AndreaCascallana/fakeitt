@@ -1,5 +1,6 @@
-import React from "react";
+import {React, useEffect} from "react";
 import { Link } from "react-router-dom";
+import usePostComments from "../../views/Post/usePostComments";
 import Button from "../Global/Button/Button";
 import { actionBar,
     ctaBlock,
@@ -8,6 +9,15 @@ import { actionBar,
  } from "./CommentLikeBarPost.module.sass";
 
 const CommentLikeBarPost = ({parentPost}) => {
+
+  const {fetchPostComments, comments} =usePostComments()
+
+  useEffect(() => {
+    fetchPostComments(parentPost);
+    
+  }, []);
+  
+  
   return (
     <div className={actionBar}>
       <div className={ctaBlock}>
@@ -15,7 +25,7 @@ const CommentLikeBarPost = ({parentPost}) => {
           <Button type="raw" icon="ChatBubbleLeftEllipsisIcon" />
         </Link>
 
-        <div className={number}>16</div>
+        <div className={number}>{comments.length}</div>
       </div>
       <div className={ctaBlock}>
         {/* Aquí vamos a tener que hacer cambio de estado según si he dado like o no, y sustituir icono */}
