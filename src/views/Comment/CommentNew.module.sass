@@ -23,6 +23,12 @@
                 @apply rounded-full
         .parentPostName
             @apply grow font-bold
+        .chevronContainer
+            transition: all 0.2s ease-in-out
+            &.up
+                @apply rotate-0 
+            &.down
+                @apply rotate-180 
     .formContent
         @apply mb-10 mt-2
         @apply mb-6 p-6 ml-16
@@ -56,4 +62,28 @@
                 &:hover
                     @apply bg-primary-800
         
+.parentContentContainer
+    @apply w-[1080px] mx-auto rounded-md
+    @apply shadow-post
+    @apply p-6 pb-20
+    @apply bg-white
+    @apply flex-col
+    position: fixed
+    bottom: 0
+    z-index: 100
+    transition: all 0.7s ease-out
+    &.invisible
+        @apply h-0
+        @apply opacity-0
+    &.visible
+        @apply h-auto
+        @apply opacity-100
+    .drag
+        @apply h-1 w-14 rounded-sm mx-auto
+        @apply bg-gray-600
         
+    .publiOrig
+        @apply text-xs text-primary-800 uppercase
+        @apply flex-shrink
+        .textOrig
+            @apply text-base

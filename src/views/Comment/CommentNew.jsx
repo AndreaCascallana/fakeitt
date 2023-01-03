@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import Button from "../../components/Global/Button/Button";
 import { useFormik } from "formik";
-import useSinglePostData from "./../Post/useSinglePostData"
+import useSinglePostData from "./../Post/useSinglePostData";
 import {
   newCommentContainer,
   newCommentNavigation,
@@ -10,50 +10,58 @@ import {
   newCommentInfo,
   avatar,
   parentPostName,
+  chevronContainer,
+  up,
+  down,
   formContent,
   formControl,
-  formCtas
-
-
+  formCtas,
+  parentContentContainer,
+  invisible,
+  visible,
+  drag,
+  publiOrig,
+  textOrig,
 } from "./CommentNew.module.sass";
 import { useEffect } from "react";
 import useSingleCommentData from "./useSingleCommentData";
 import useUserName from "./../../components/Global/useUserName";
+import { useContext } from "react";
+import { CommentNewContext } from "../../contexts/CommentNewContext";
+import { PaintBrushIcon } from "@heroicons/react/24/outline";
+import classNames from "classnames";
 
 const CommentNew = () => {
   const [formStates, setFormStates] = useState([]);
 
-  const {fetchSinglePost, post } = useSinglePostData();
+  const { fetchSinglePost, post } = useSinglePostData();
   const [hasError, setHasError] = useState(false);
 
-  const {postId}=useParams()
+  const { postId } = useParams();
 
   let [searchParams, setSearchParams] = useSearchParams();
-  const parentComment= searchParams.get('parent')
-  
+  const parentComment = searchParams.get("parent");
+  //console.log(parentComment);
+
   //HOOKS
   const { commentSingle, fetchCommentById } = useSingleCommentData();
   const { user, fetchUserName } = useUserName();
-  
 
   useEffect(() => {
     fetchSinglePost(postId);
-    fetchCommentById(parentComment)
+    fetchCommentById(parentComment);
     // console.log(commentSingle)
   }, []);
-  useEffect(()=>{
-    fetchUserName(commentSingle.userId)
-    
+  useEffect(() => {
+    fetchUserName(commentSingle.userId);
+  }, [commentSingle]);
 
-  },[parentComment]);
- 
   // post no tiene elemento title, pero lo sacariamos de post.title
-  
 
   //FORMIK
 
   const formik = useFormik({
-    initialValues: {      
+    initialValues: {
       text: "",
     },
     onSubmit: (values) => {
@@ -61,10 +69,12 @@ const CommentNew = () => {
       formStates_.push(values);
       setFormStates(formStates_);
 
-      // ----------- validacion
+      
 
       addNewComment(values);
-      // formik.resetForm();
+      formik.resetForm();
+      // ----------- validacion
+      //paintConfirmation()
     },
   });
 
@@ -75,19 +85,39 @@ const CommentNew = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...values, date: new Date(), userId: "myUserId", postId: postId,
-        parent: parentComment }),
+        body: JSON.stringify({
+          ...values,
+          date: new Date(),
+          userId: "myUserId",
+          postId: postId,
+          parent: parentComment,
+        }),
         method: "POST",
       })
         .then((d) => d.json())
         .then((d) => d);
-      
+
       // navigate("/");
     } catch (e) {
       setHasError(true);
       console.log(e);
     }
   };
+
+  //Toggle Parent
+  const {isParentVisible, toggleParent} = useContext(CommentNewContext)
+  const parentContainerClasses= classNames(parentContentContainer, {
+    [`${visible}`]: isParentVisible==true,
+    [`${invisible}`]: isParentVisible==false
+  });
+
+  //Flip Chevron
+  const {isChevronDownright} = useContext(CommentNewContext)
+  const chevronClasses= classNames(chevronContainer, {
+    [`${up}`]: isChevronDownright==true,
+    [`${down}`]: isChevronDownright==false
+  });
+
 
   return (
     <>
@@ -106,17 +136,21 @@ const CommentNew = () => {
               alt="User's Avatar"
             />
           </div>
-          <div className={parentPostName}>En respuesta a 
-          {parentComment == null ? ` Post ${postId}`: ` Comment by ${user.name} ${user.fName}`}
-          
+          <div className={parentPostName}>
+            En respuesta a
+            {parentComment == null
+              ? ` Post ${postId}`
+              : ` Comment by ${user.name} ${user.fName}`}
           </div>
-          <div>
-            <Button type="raw" icon="ChevronDownIcon" />
+          <div  
+          className={chevronClasses}>
+            <Button 
+            clickHandler={toggleParent}
+            type="raw" icon="ChevronDownIcon" />
           </div>
         </div>
         <form onSubmit={formik.handleSubmit} className={formContent}>
           <div className={formControl}>
-            
             <textarea
               type="text"
               name="text"
@@ -132,7 +166,16 @@ const CommentNew = () => {
           </div>
         </form>
         {/* Queda Añadir onclick que haga salir un mensaje de confirmacion y nos haga navegar a la página anterior */}
-        
+      </div>
+      <div className={parentContainerClasses}>
+        <div className={drag} onClick={toggleParent}></div>
+        <h3 className={publiOrig}>
+          {parentComment == null ? `Publicación ` : `Commentario `}
+          original
+        </h3>
+        <div className={textOrig}>
+          {parentComment == null ? `${post.text}` : `${commentSingle.text}`}
+        </div>
       </div>
     </>
   );
