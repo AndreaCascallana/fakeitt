@@ -1,10 +1,17 @@
 .postDiv
     @apply m-4 w-full
     .postData
-        @apply  flex gap-1
+        @apply mb-6
+        @apply  flex gap-4 items-center
         @apply text-primary-600
         .avatar
-            @apply w-10
+            @apply w-12 h-12
+            @apply flex flex-shrink-0
+            img
+                @apply w-full h-full
+                @apply object-cover
+                @apply rounded-full
+
         .author
             @apply font-bold
         .date
