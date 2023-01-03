@@ -27,11 +27,8 @@ const CommentAccordion = ({
   const { user, fetchUserName } = useUserName();
   const { formatDate } = useDate();
   const { fetchCommentReplies, replies } = useCommentReplies();
-  
-  const {postId} = useParams();
 
-  
-  
+  const { postId } = useParams();
 
   useEffect(() => {
     fetchUserName(commentAuthor);
@@ -41,11 +38,9 @@ const CommentAccordion = ({
 
   //Solo quiero que se me rendericen los comentarios que not ienen padres, y mapear sus respuestas.
   // HAY CONFLICTO entre el contador de respuestas al posts y los comentarios mapeados.
-  //Al quitar el condicional, sí salen estos comentarios. Debe ser que en el servidor están isncritos como que tienen padre, 
-  //pero no está el padre.
+  //Al quitar el condicional, sí salen estos comentarios. Debe ser que en el servidor están isncritos como que tienen padre, pero no está el padre.
   return (
     <>
-      
       {commentParent !== null ? (
         <div className={commentBox}>
           <div className={author}>
@@ -67,6 +62,11 @@ const CommentAccordion = ({
               </Link>
               <div className="counter">{replies.length}</div>
             </div>
+            <div className={miniButton}>
+              <Link to={`/post/${postId}/edit?parent=${commentId}`}>
+                <Button type="raw" icon="PencilIcon" />
+              </Link>
+            </div>
           </div>
           <div className={commentContent}>{commentText}</div>
           <div className={repliesBox}>
@@ -86,8 +86,8 @@ const CommentReply = ({ reply }) => {
   const { user, fetchUserName } = useUserName();
   const { formatDate } = useDate();
   const { fetchCommentReplies, replies } = useCommentReplies();
-  
-  const {postId} = useParams();
+
+  const { postId } = useParams();
 
   useEffect(() => {
     fetchUserName(reply.userId);
@@ -113,9 +113,13 @@ const CommentReply = ({ reply }) => {
           <div className={miniButton}>
             <Link to={`/post/${postId}/comment/new?parent=${reply.id}`}>
               <Button type="raw" icon="ChatBubbleLeftEllipsisIcon" />
-              
             </Link>
           </div>
+        </div>
+        <div className={miniButton}>
+          <Link to={`/post/${postId}/edit?parent=${reply.id}`}>
+            <Button type="raw" icon="PencilIcon" />
+          </Link>
         </div>
         <div className={commentContent}>{reply.text}</div>
         <div className={repliesBox}>
