@@ -8,10 +8,7 @@ const usePostsData = () => {
   //const navigate = useNavigate();
 
   // // petición
-  // useEffect(() => {
-  //   fetchSinglePost();
-  // }, []);
-  //console.log(posts)
+  
 
   //fetch, loading and error controller
   const fetchSinglePost = async (id) => {
@@ -39,7 +36,7 @@ const usePostsData = () => {
 
   
 
-  return {fetchSinglePost, post, isLoading, hasError };
+  return {fetchSinglePost, post, isLoading, hasError, isLoading };
 };
 
 export default usePostsData;
