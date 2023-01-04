@@ -28,7 +28,6 @@ import useSingleCommentData from "./useSingleCommentData";
 import useUserName from "./../../components/Global/useUserName";
 import { useContext } from "react";
 import { CommentNewContext } from "../../contexts/CommentNewContext";
-import { PaintBrushIcon } from "@heroicons/react/24/outline";
 import classNames from "classnames";
 
 const CommentNew = () => {

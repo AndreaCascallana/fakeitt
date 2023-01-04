@@ -11,7 +11,7 @@ import PostNew from "./views/Post/PostNew";
 import PostSingle from "./views/Post/PostSingle";
 import Register from "./views/Register";
 import Search from "./views/Search";
-import Users from "./views/User/Users";
+
 import Profile from "./views/User/Profile";
 
 const Routing = () => {
