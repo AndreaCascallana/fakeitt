@@ -1,0 +1,60 @@
+.newCommentNavigation
+        @apply mb-10
+        .close
+            @apply text-zinc-600
+            @apply transition-colors duration-300
+
+            &:hover
+                @apply text-zinc-900
+.newCommentContainer
+    @apply max-w-[1080px] mx-auto
+
+    
+    
+    .newCommentInfo
+        @apply flex gap-8 items-center
+        @apply border-b-2
+        @apply py-1
+        
+        .avatar
+            @apply w-16 h-16 flex flex-shrink-0
+            img
+                @apply w-full h-full object-cover 
+                @apply rounded-full
+        .parentPostName
+            @apply grow font-bold
+        
+    .formContent
+        @apply mb-10 mt-2 mx-auto
+        @apply mb-6 p-6 ml-16
+        @apply border-b-[1px] border-zinc-200
+        .formControl
+            @apply flex flex-col
+            @apply mb-4
+            &:last-child
+                @apply mb-0
+            label
+                @apply text-base
+            input
+                @apply outline-0 border-0
+                @apply text-base
+                @apply placeholder-zinc-300
+                @apply max-w-screen-sm
+            textarea
+                height: 40vh
+                @apply resize-none w-full
+                @apply outline-0 border-0
+                @apply placeholder-zinc-500
+                @apply max-w-screen-sm mx-auto
+            
+                
+    .formCtas
+        .formControl
+            @apply flex justify-end w-full
+            button
+                @apply bg-primary-600 text-white font-medium
+                @apply py-1 px-4 rounded-md
+                @apply transition-colors duration-500
+                &:hover
+                    @apply bg-primary-800
+        
