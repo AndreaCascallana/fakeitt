@@ -30,7 +30,28 @@ const usePostsData = () => {
       //navigate("/404")
     }
   };
-  return { posts, isLoading, hasError };
+
+  const deleteSinglePost = async (id) => {
+    try {
+      console.log(id);
+      setIsLoading(true);
+      await fetch("http://localhost:5757/posts/" + id, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      console.log("post borrado");
+      await fetchPosts();
+      setIsLoading(false);
+    } catch (e) {
+      setHasError(true)
+    }
+  };
+
+
+  return { fetchPosts, posts, setPosts, isLoading, hasError, deleteSinglePost };
 };
 
 export default usePostsData;

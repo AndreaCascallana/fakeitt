@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react";
+import usePostData from "./usePostsData";
 
 const usePostsData = () => {
   //
   const [post, setPost] = useState({})
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-  //const navigate = useNavigate();
 
-  // // petición
-  // useEffect(() => {
-  //   fetchSinglePost();
-  // }, []);
-  //console.log(posts)
 
   //fetch, loading and error controller
   const fetchSinglePost = async (id) => {
@@ -23,21 +18,14 @@ const usePostsData = () => {
         .then((d) => d.json())
         .then((d) => d);
 
-      // console.log(post_);
       setPost(post_);
       setIsLoading(false);
-      // console.log(post_)
     } catch (e) {
-      console.log(e);
       setHasError(true);
       setIsLoading(false);
-      //navigate("/404")
     }
-    // return post
   };
 
-
-  
 
   return {fetchSinglePost, post, isLoading, hasError };
 };

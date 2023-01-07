@@ -10,25 +10,29 @@
 
     .cardData
         @apply mb-6
-        @apply flex gap-4 items-center
-        @apply text-primary-600
-        .avatarContainer
-            .avatar
-                @apply w-12 h-12
-                @apply flex flex-shrink-0
-                img
-                    @apply w-full h-full
-                    @apply object-cover
-                    @apply rounded-full
+        @apply flex justify-between items-center
+        .mainData
+            @apply flex gap-4 items-center
+            .avatarContainer
+                .avatar
+                    @apply w-12 h-12
+                    @apply flex flex-shrink-0
+                    img
+                        @apply w-full h-full
+                        @apply object-cover
+                        @apply rounded-full
 
-        .dataContainer
-            @apply flex gap-2
-            .author
-                @apply font-semibold
-            .divider
-                @apply font-semibold
-            .date
-                @apply font-sans
+            .dataContainer
+                @apply flex gap-2
+                @apply text-primary-600
+                .author
+                    @apply font-semibold
+                .divider
+                    @apply font-semibold
+                .date
+                    @apply font-sans
+        .ctas
+            @apply font-sans
     .cardContent
         @apply mb-6
         .cardTitle
