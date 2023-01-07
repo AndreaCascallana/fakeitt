@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Button from "../Global/Button/Button";
+import Button from "../Button/Button";
 import {
   modalContainer,
   modalText,
@@ -7,8 +7,8 @@ import {
   close,
   divider,
 } from "./Modal.module.sass";
-import { ModalContext } from "../../contexts/ModalContext";
-import usePostsData from "../../views/Post/useSinglePostData";
+import { ModalContext } from "../../../contexts/ModalContext";
+import usePostsData from "../../../views/Post/useSinglePostData";
 
 const Modal = () => {
   const { isModalVisible, showModal, toggleModal } = useContext(ModalContext);

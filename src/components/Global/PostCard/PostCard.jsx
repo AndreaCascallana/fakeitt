@@ -24,7 +24,7 @@ import {
 import CommentLikeBarPost from "../../CommentLikeBar/CommentLikeBarPost";
 import usePostsData from "../../../views/Post/usePostsData";
 import { ModalContext } from "../../../contexts/ModalContext";
-import Modal from "../../Modal/Modal";
+import Modal from "../../Global/Modal/Modal";
 
 const PostCard = ({
   postId,
@@ -75,7 +75,7 @@ const PostCard = ({
             </div>
           </div>
           <div className={ctas}>
-            <Button buttonType="raw" icon="TrashIcon" clickHandler={() => toggleModal()} />
+            <Button buttonType="raw" icon="TrashIcon" clickHandler={() => deleteSinglePost(postId)} />
           </div>
         </div>
 

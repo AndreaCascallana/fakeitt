@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createContext } from "react";
-import Modal from "../components/Modal/Modal";
+import Modal from "../components/Global/Modal/Modal";
 
 export const ModalContext = createContext();
 
