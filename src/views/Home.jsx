@@ -7,8 +7,7 @@ import {  cardList } from "./Home.module.sass";
 import BottomNav from "../components/Global/BottomNav/BottomNav";
 
 const Home = () => {
-  const { posts, isLoading, hasError } = usePostsData();
-  //console.log(posts)
+  const { posts, isLoading, hasError, deleteSinglePost } = usePostsData();
 
   // guards
   if (hasError) {
@@ -20,7 +19,6 @@ const Home = () => {
 
   return (
     <>
-      
       <div className={cardList}>
         {posts.map((post) => (
           <PostCard
