@@ -9,15 +9,26 @@
         @apply max-w-[325px]
 
     .formControl
+        @apply relative
         input
             @apply w-full
             @apply border-[1px] border-zinc-200 rounded-md
             @apply py-2 px-4
-            @apply relative
             
             &:focus-visible
                 @apply outline-0
                 @apply shadow-spread
 
         button
-            @apply absolute top-[124px] right-[148px]
+            @apply absolute top-1 right-2
+
+.searchNaviContainer
+    @apply my-4
+    .searchNavi
+        @apply flex
+        @apply mb-6
+    .searchNaviContent
+        .usersContainer
+            @apply flex flex-col gap-8
+        .postsContainer
+            @apply flex flex-col

@@ -9,7 +9,9 @@ import {
   postDiv,
   postData,
   avatar,
+  dataContainer,
   author,
+  divider,
   date,
   cardContent,
   cardTitle,
@@ -71,22 +73,21 @@ const PostSingle = () => {
       <div className={postDiv}>
         <div className={postData}>
           <div className={avatar}>
-            <img src="https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80" 
-            className="w-10" />
+            <img src="https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80" />
           </div>
-          <div className={author}>
-            {user.name} {user.fName}
+          <div className={dataContainer}>
+            <div className={author}>
+              {user.name} {user.fName}
+            </div>
+            <div className={divider}> - </div>
+            <div className={date}>{formatDate(post.date)}</div>
           </div>
-          <div className={date}>{formatDate(post.date)}</div>
         </div>
         <div className={cardContent}>
           <div className={cardTitle}>Static Title</div>
           <div className={cardText}>{post.text}</div>
         </div>
-        <CommentLikeBarPost
-          parentPost={postId}
-        />
-        
+        <CommentLikeBarPost parentPost={postId} />
       </div>
       <div className={commentGroup}>
         {/* Si el array está vacío, que salga el mensaje de wow cuanto vacío */}
