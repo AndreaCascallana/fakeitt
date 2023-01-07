@@ -8,23 +8,23 @@ import {
   searchNavi,
   searchNaviContent,
   usersContainer,
-  postsContainer
+  postsContainer,
 } from "./Search.module.sass";
-import { useParams, useSearchParams } from "react-router-dom";
-import useUserSingleByNameData from "./User/useUserSingleByNameData";
-import useUserName from "../components/Global/useUserName";
 import useTabItems from "../components/Global/Tab/useTabItems";
 import TabItem from "../components/Global/Tab/TabItem";
+import usePostsData from "./Post/usePostsData";
+import PostCard from "../components/Global/PostCard/PostCard";
+import { useUsersData } from "./User/useUsersData";
+import UserCard from "../components/Global/UserCard/UserCard";
+import useUserSingleData from "./User/useUserSingleData";
 
 const Search = () => {
-  const { name } = useParams();
-  const { userSingleByName, fetchUserSingleByName } = useUserSingleByNameData();
+  const { fetchPosts, posts, setPosts, isLoading, hasError, deleteSinglePost } =
+    usePostsData();
+  const { users, fetchUsers } = useUsersData();
+  const { fetchUserSingle, userSingle } = useUserSingleData();
 
   const [formStates, setFormStates] = useState([]);
-
-  const [searchParams, setSearchParams] = useSearchParams();
-  const userName = searchParams.get("name");
-  const { user, fetchUserName } = useUserName();
 
   const [activeIndex, updateActiveIndex] = useTabItems();
 
@@ -43,11 +43,32 @@ const Search = () => {
 
   //
   useEffect(() => {
-    fetchUserSingleByName(userName);
+    fetchPosts();
+    fetchUsers();
+    fetchUserSingle();
   }, []);
-  useEffect(() => {
-    fetchUserName(user.name);
-  }, [userName]);
+
+  //
+  let renderPostCard = posts.map((post) => {
+    if (post.text.includes(formik.values.search)) {
+      return (
+        <PostCard
+          key={post.id}
+          postId={post.id}
+          authorImg={post.userId}
+          postAuthor={post.userId}
+          postDate={post.date}
+          postText={post.text}
+        />
+      );
+    }
+  });
+
+  let renderUserCard = users.map((user) => {
+    if (user.name.includes(formik.values.search)) {
+      return <UserCard key={user.id} id={user.id} name={user.name} fName={user.fName} />;
+    }
+  });
 
   return (
     <div>
@@ -83,28 +104,13 @@ const Search = () => {
         </div>
         <div className={searchNaviContent}>
           <div className={usersContainer}>
-            {console.log(userName)}
-
-            {activeIndex == 1 ? (formik.values.name == userName ? `Nombre de usuario: ${userName}` : null) : null}
+            {activeIndex == 1 ? renderUserCard : null}
           </div>
           <div className={postsContainer}>
-            {activeIndex == 2 ? `vacio` : null}
-            {/* {activeIndex == 2 ? (userComments.length ? commentList : null) : null} */}
+            {activeIndex == 2 ? renderPostCard : null}
           </div>
         </div>
       </div>
-
-      {/* <div>
-        <h4>Current form</h4>
-        <pre>{JSON.stringify(formik.values)}</pre>
-      </div>
-
-      <div>
-        <h4>Saved form states</h4>
-        {formStates.map((fState, i) => (
-          <pre key={i}>{JSON.stringify(fState)}</pre>
-        ))}
-      </div> */}
     </div>
   );
 };
