@@ -7,7 +7,11 @@ import {  cardList } from "./Home.module.sass";
 import BottomNav from "../components/Global/BottomNav/BottomNav";
 
 const Home = () => {
-  const { posts, isLoading, hasError, deleteSinglePost } = usePostsData();
+  const { fetchPosts, posts, setPosts, isLoading, hasError, deleteSinglePost } = usePostsData();
+
+  // petición
+  useEffect(() => {
+  }, [posts]);
 
   // guards
   if (hasError) {
