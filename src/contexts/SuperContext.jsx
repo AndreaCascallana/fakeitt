@@ -5,6 +5,7 @@ import MainContextProvider from "./MainContext";
 import SearchContextProvider from "./SearchContext";
 import UsersContextProvider from "./UsersContext";
 import UserSingleContext from "./UserSingleContext";
+import ModalContextProvider from "./ModalContext";
 
 const SuperContext = ({ children }) => {
   return (
@@ -14,7 +15,9 @@ const SuperContext = ({ children }) => {
           <UserSingleContext>
             <EditingUserContextProvider>
               <CommentNewContextProvider>
-              {children}
+                <ModalContextProvider>
+                  {children}
+                </ModalContextProvider>
               </CommentNewContextProvider>
             </EditingUserContextProvider>
           </UserSingleContext>
