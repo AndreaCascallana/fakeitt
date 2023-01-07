@@ -7,7 +7,6 @@ import { BrowserRouter } from "react-router-dom";
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
     <BrowserRouter>
       <SuperContext>
         
@@ -15,5 +14,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         
       </SuperContext>
     </BrowserRouter>
-  </React.StrictMode>
 );
