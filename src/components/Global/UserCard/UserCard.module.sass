@@ -1,0 +1,16 @@
+.userCardContainer
+    @apply flex items-center justify-between
+    @apply p-4 rounded-md shadow-md
+    .userCardData
+        @apply flex gap-4 items-center
+        .avatar
+            @apply w-12 h-12
+            @apply flex flex-shrink-0
+            img
+                @apply w-full h-full
+                @apply object-cover
+                @apply rounded-full
+        .author
+            @apply text-zinc-700 font-medium text-base
+    .userCardCtas
+        @apply font-sans
